@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import { useGlobalState } from './store'
 import { isWallectConnected, loadNfts } from './Adulam'
 import Alert from './components/Alert'
+import AboutUs from './components/AboutUs'
+import ContactUs from './components/ContactUs'
 import BuyNFTs from './components/BuyNFTs'
 import MyCollection from './components/MyCollection'
 import Footer from './components/Footer'
@@ -26,8 +28,10 @@ const App = () => {
             <Header />
             <Hero />
           </div>
+          <AboutUs />
           {connectedAccount && <BuyNFTs artworks={nfts} />}
           {connectedAccount && <MyCollection artworks={nfts} />}
+          <ContactUs />
           <Footer />
           <Loading />
           <Alert />
