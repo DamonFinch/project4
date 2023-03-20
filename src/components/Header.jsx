@@ -16,12 +16,12 @@ const Header = () => {
   }
 
   const AboutUsHandler = () => {
-    const reftp = document.getElementById('mycollection');
+    const reftp = document.getElementById('aboutus');
     reftp?.scrollIntoView( { behavior: 'smooth', block: 'start' } );
   }
 
   const ContactUsHandler = () => {
-    const reftp = document.getElementById('mycollection');
+    const reftp = document.getElementById('contactus');
     reftp?.scrollIntoView( { behavior: 'smooth', block: 'start' } );
   }
 
