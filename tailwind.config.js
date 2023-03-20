@@ -26,6 +26,9 @@ module.exports = {
       animation: {
         'slide-in': 'slide-in 0.5s ease-out',
       },
+      backgroundImage: {
+        'hero': "url('./assets/galaxy-bg.png')",
+      },
     },
   },
   variants: {

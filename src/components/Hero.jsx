@@ -1,4 +1,4 @@
-import avatar from '../assets/ethlogo.png'
+import galaxy from '../assets/galaxy-bg.png'
 import github from '../assets/github_icon.png'
 import facebook from '../assets/facebook_icon.png'
 import twitter from '../assets/twitter_icon.png'
@@ -27,8 +27,8 @@ const Hero = () => {
   }
   return (
     <div
-      className="bg-[url('https://cdn.pixabay.com/photo/2022/03/01/02/51/galaxy-7040416_960_720.png')]
-        bg-no-repeat bg-cover"
+      className="bg-hero bg-no-repeat bg-cover"
+      style={{height: 700}}
     >
       <div className="flex flex-col justify-center items-center mx-auto py-10">
         <div className="flex flex-col justify-center items-center">
@@ -49,7 +49,7 @@ const Hero = () => {
           >
             Buy Now
           </button>
-
+          <div style={{height: 180}}></div>
           <ul className="flex flex-row justify-right space-x-2 items-center my-4">
             <a
               className="bg-white hover:scale-50 transition-all duration-75 delay-75 rounded-full mx-2"
