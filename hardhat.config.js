@@ -1,16 +1,33 @@
-require("@nomicfoundation/hardhat-toolbox");
+require("@nomiclabs/hardhat-waffle");
+require('dotenv').config()
 
-// The next line is part of the sample project, you don't need it in your
-// project. It imports a Hardhat task definition, that can be used for
-// testing the frontend.
-require("./tasks/faucet");
-
-/** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: "0.8.17",
+  defaultNetwork: "localhost",
   networks: {
     hardhat: {
-      chainId: 1337 // We set 1337 to make interacting with MetaMask simpler
+    },
+    localhost: {
+      url: "http://127.0.0.1:8545"
+    },
+    goerli: {
+      url: process.env.ENDPOINT_URL,
+      accounts: [process.env.DEPLOYER_KEY]
     }
+  },
+  solidity: {
+    version: '0.8.11',
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200
+      }
+    }
+  },
+  paths: {
+    sources: "./src/contracts",
+    artifacts: "./src/abis"
+  },
+  mocha: {
+    timeout: 40000
   }
-};
+}
