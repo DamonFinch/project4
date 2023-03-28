@@ -1,30 +1,27 @@
-import galaxy from '../assets/galaxy-bg.png'
+import { useNavigate } from 'react-router-dom'
+
 import github from '../assets/github_icon.png'
 import facebook from '../assets/facebook_icon.png'
 import twitter from '../assets/twitter_icon.png'
 import linkedIn from '../assets/linkedIn_icon.png'
 import medium from '../assets/medium_icon.png'
 import { setAlert, setGlobalState, useGlobalState } from '../store'
-import { payToMint } from '../Adulam'
 
 const Hero = () => {
   const [nfts] = useGlobalState('nfts')
+  const navigate = useNavigate();
 
-  const onMintNFT = async () => {
-    setGlobalState('loading', {
-      show: true,
-      msg: 'Minting new NFT to your account',
-    })
+  // const onMintNFT = async () => {
+  //   setGlobalState('loading', {
+  //     show: true,
+  //     msg: 'Minting new NFT to your account',
+  //   })
 
-    await payToMint()
-      .then(() => setAlert('Minting Successful...', 'green'))
-      .catch(() => setGlobalState('loading', { show: false, msg: '' }))
-  }
-
-  const BuyNFTHandler = () => {
-    const reftp = document.getElementById('buynft');
-    reftp?.scrollIntoView( { behavior: 'smooth', block: 'start' } );
-  }
+  //   await payToMint()
+  //     .then(() => setAlert('Minting Successful...', 'green'))
+  //     .catch(() => setGlobalState('loading', { show: false, msg: '' }))
+  // }
+  
   return (
     <div
       className="bg-hero bg-no-repeat bg-cover"
@@ -45,7 +42,7 @@ const Hero = () => {
             className="shadow-xl shadow-black text-white
             bg-[#e32970] hover:bg-[#bd255f] p-2 pl-4 pr-4
             rounded-full cursor-pointer my-4"
-            onClick={BuyNFTHandler}
+            onClick={() => navigate('buynft')}
           >
             Buy Now
           </button>

@@ -1,26 +1,21 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom'
 import ethlogo from '../assets/ethlogo.png'
-import { connectWallet } from '../Adulam'
-import { truncate, useGlobalState } from '../store'
+import { connectWallet } from '../Utils'
+import { truncate, useGlobalState, setIsLanding } from '../store'
 
 const Header = () => {
   const [connectedAccount] = useGlobalState('connectedAccount')
-
-  const BuyNFTHandler = () => {
-    const reftp = document.getElementById('buynft');
-    reftp?.scrollIntoView( { behavior: 'smooth', block: 'start' } );
-  }
-
-  const MyCollectionHandler = () => {
-    const reftp = document.getElementById('mycollection');
-    reftp?.scrollIntoView( { behavior: 'smooth', block: 'start' } );
-  }
+  const navigate = useNavigate();
 
   const AboutUsHandler = () => {
+    navigate('/');
     const reftp = document.getElementById('aboutus');
     reftp?.scrollIntoView( { behavior: 'smooth', block: 'start' } );
   }
 
   const ContactUsHandler = () => {
+    navigate('/');
     const reftp = document.getElementById('contactus');
     reftp?.scrollIntoView( { behavior: 'smooth', block: 'start' } );
   }
@@ -39,8 +34,8 @@ const Header = () => {
         {
           connectedAccount ? (
             <>
-              <li className="mx-3 cursor-pointer" onClick={BuyNFTHandler}>Buy NFT</li>
-              <li className="mx-3 cursor-pointer" onClick={MyCollectionHandler}>My Collection</li>
+              <li className="mx-3 cursor-pointer" onClick={() => navigate('/buynft')}>Buy NFT</li>
+              <li className="mx-3 cursor-pointer" onClick={() => navigate('/myCollection')}>My Collection</li>
             </>
           ) : (<></>)
         }
