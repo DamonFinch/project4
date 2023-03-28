@@ -1,97 +1,91 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.7.0 <0.9.0;
 
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Contract is ERC721Enumerable, Ownable {
-    using Strings for uint256;
+contract Contract is ERC1155, Ownable {
 
-    string baseURI;
-    string public baseExtension = ".json";
-    string public baseImage = ".webp";
-    uint256 public cost = 0.001 ether;
-    uint256 public maxSupply = 99;
     bool public paused = false;
+    mapping(uint256 => uint256) typeToId;
 
-    event Sale(
+    event Minted(
         uint256 id,
-        address indexed buyer,
+        uint256 amount,
+        address indexed to,
         uint256 cost,
-        string indexed tokenURI,
         uint256 timestamp
     );
 
     struct SaleStruct {
         uint256 id;
-        address buyer;
+        uint256 amount;
+        address owner;
         uint256 cost;
-        string imageURL;
         uint256 timestamp;
     }
 
     SaleStruct[] minted;
 
-    constructor(
-        string memory _name,
-        string memory _symbol,
-        string memory _initBaseURI
-    ) ERC721(_name, _symbol) {
-        setBaseURI(_initBaseURI);
+    mapping(address => SaleStruct[]) collected;
+
+    constructor(string memory _uri) ERC1155 (_uri) {
+        typeToId[1] = 1;
+        typeToId[2] = 2;
+        typeToId[5] = 3;
+        typeToId[10] = 4;
+        typeToId[20] = 5;
+        typeToId[50] = 6;
+        typeToId[100] = 7;
     }
 
-    function payToMint() public payable {
-        uint256 supply = totalSupply();
+    function mint(uint256 nftType, uint256 amount) public onlyOwner {
         require(!paused, "NFTs under maintenance!");
-        require(supply <= maxSupply, "Sorry, all NFTs have been minted!");
-        require(msg.value > 0 ether, "Ether too low for minting!");
 
-        if (msg.sender != owner()) {
-            require(msg.value >= cost);
-        }
-
-        _safeMint(msg.sender, supply + 1);
+        uint256 tokenId = typeToId[nftType];
+        _mint(msg.sender, tokenId, amount, "");
+        uint256 cost = nftType * 0.01 ether;
 
         minted.push(
             SaleStruct(
-                supply + 1,
+                tokenId,
+                amount,
                 msg.sender,
-                msg.value,
-                toImage(supply + 1),
+                cost,
                 block.timestamp
             )
         );
         
-        emit Sale(supply, msg.sender, msg.value, tokenURI(supply + 1), block.timestamp);
+        emit Minted(tokenId, amount, msg.sender, cost, block.timestamp);
     }
 
-    function tokenURI(uint256 tokenId)
-        public
-        view
-        virtual
-        override
-        returns (string memory)
-    {
-        require(
-            _exists(tokenId),
-            "ERC721Metadata: URI query for nonexistent token"
+    function deposit() public payable {}
+
+    function buyFromServer(uint256 tokenId, uint256 amount) public {
+        require(!paused, "NFTs under maintenance!");
+
+        _burn(owner(), tokenId, amount);
+        minted[tokenId-1].amount = balanceOf(owner(), tokenId);
+
+        _mint(msg.sender, tokenId, amount, "");
+        collected[msg.sender].push(
+            SaleStruct(
+                tokenId,
+                amount,
+                msg.sender,
+                minted[tokenId-1].cost,
+                block.timestamp
+            )
         );
 
-        string memory currentBaseURI = _baseURI();
-        return bytes(currentBaseURI).length > 0
-            ? string(abi.encodePacked(currentBaseURI, tokenId.toString(), baseExtension))
-            : "";
     }
-
-    function toImage(uint256 tokenId) internal view returns (string memory) {
-        string memory currentBaseURI = _baseURI();
-        return bytes(currentBaseURI).length > 0
-            ? string(abi.encodePacked(currentBaseURI, tokenId.toString(), baseImage))
-            : "";
-    }
-
+    
     function getAllNFTs() public view returns (SaleStruct[] memory) {
         return minted;
+    }
+
+    function getMyNFTs() public view returns (SaleStruct[] memory) {
+        return collected[msg.sender];
     }
     
     function getAnNFTs(uint256 tokenId) public view returns (SaleStruct memory) {
@@ -103,16 +97,8 @@ contract Contract is ERC721Enumerable, Ownable {
         require(success1);
     }
 
-    function setBaseURI(string memory _newBaseURI) public onlyOwner {
-        baseURI = _newBaseURI;
-    }
-
     function setPause(bool _state) public onlyOwner {
         paused = _state;
-    }
-
-    function _baseURI() internal view virtual override returns (string memory) {
-        return baseURI;
     }
 
 }

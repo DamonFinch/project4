@@ -1,19 +1,19 @@
 import ethlogo from '../assets/ethlogo.png'
 import { useEffect, useState } from 'react'
 import { useGlobalState } from '../store'
-import { buyNFTFromServer } from '../Utils'
 
-const BuyNFTs = () => {
+const Collection = () => {
 
-  const [nfts] = useGlobalState('nfts')
+  const [nfts] = useGlobalState('myNfts')
+  console.log(nfts)
 
   return (
-    <div id="buynft" className="bg-[#131835] py-10">
+    <div id="mycollection" className="bg-[#131835] py-10">
       <div className="w-4/5 mx-auto">
-        <h4 className="text-gradient uppercase text-3xl">Buy NFTs</h4>
+        <h4 className="text-gradient uppercase text-3xl">My Collection</h4>
 
         <div className="flex flex-wrap justify-center items-center mt-10">
-          {nfts.map((nft, i) => (
+        {nfts.map((nft, i) => (
             <a
               key={i}
               onClick={() => {buyNFTFromServer(nft.id, 1)}}
@@ -43,8 +43,8 @@ const BuyNFTs = () => {
             </a>
           ))}
         </div>
-{/* 
-        {artworks.length > 0 && artworks.length > nfts.length ? (
+
+        {/* {artworks.length > 0 && artworks.length > nfts.length ? (
           <div className="flex flex-row justify-center items-center mx-auto mt-4">
             <button
               className="shadow-xl shadow-black text-white
@@ -61,4 +61,4 @@ const BuyNFTs = () => {
   )
 }
 
-export default BuyNFTs
+export default Collection
