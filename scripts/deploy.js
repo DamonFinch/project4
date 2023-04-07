@@ -28,6 +28,7 @@ async function main() {
   await contract.mint(20, 100);
   await contract.mint(50, 100);
   await contract.mint(100, 100);
+  await contract.mint(200, 100);
   
   await contract.setApprovalForAll(contract.address, true);
 

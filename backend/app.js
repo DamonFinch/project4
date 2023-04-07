@@ -5,12 +5,12 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cors = require('cors');
-const cron = require('node-cron');
 
 const authRoutes = require('./routes/authRoutes');
+const newsRoutes = require('./routes/newsRoutes');
+const usersRoutes = require('./routes/UsersRoutes');
 const globalErrHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
-const cronJob = require('./utils/cronJob');
 
 const app = express();
 
@@ -51,14 +51,10 @@ app.use(xss());
 // Prevent parameter pollution
 app.use(hpp());
 
-// Cron Job
-cron.schedule('0 8 * * *', function() {
-    // console.log('running a task every minute');
-    cronJob.getFinishStakeLog();
-});
-
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/user', usersRoutes);
+app.use('/api/news', newsRoutes);
 
 //handle undefined Routes
 app.use('*', (req, res, next) => {
