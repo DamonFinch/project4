@@ -13,11 +13,11 @@ process.on('uncaughtException', err => {
 const app = require('./app');
 
 
-mongoose.connect(process.env.DATABASE, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useCreateIndex: true
-});
+mongoose.connect(process.env.DATABASE,
+    err => {
+        if(err) throw err;
+        console.log('connected to MongoDB')
+    });
 mongoose.connection.on('connected', () => {
     console.log('Connected to MongoDB');
 });
@@ -25,7 +25,7 @@ mongoose.connection.on('error', (error) => {
     console.log(error);
 });
 // Start the server
-const port = process.env.PORT;
+const port = process.env.PORT || 8080;
 app.listen(port, () => {
     console.log(`Application is running on port ${port}`);
 });
