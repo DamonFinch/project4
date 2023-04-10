@@ -1,30 +1,20 @@
 import * as React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { ThemeProvider, CssBaseline } from '@mui/material'
 
+import { ThemeProvider, CssBaseline } from '@mui/material'
 import useThemeMode from 'src/shared/hooks/useThemeMode'
 import { type ThemeModeProps } from 'src/types/hooks.types'
-import Landing from 'src/pages/Landing'
-import Register from 'src/pages/Register'
-import BuyNft from 'src/pages/BuyNft'
-import MyCollection from 'src/pages/MyCollection'
-import Header from 'src/components/Layouts/Header'
-// import { getGlobalState } from 'src/store'
-import { isWallectConnected, loadMyNfts, loadNfts } from 'src/utils'
 
-// const TestApp = React.lazy(async () => await import('./TestApp'))
+import AdminLayout from 'src/pages/admin'
+import UserLayout from 'src/pages/user'
+
+import { isWallectConnected } from 'src/utils'
 
 const Main = () => {
   const { themeMode } = useThemeMode() as ThemeModeProps
-  // const [connectedAccount] = getGlobalState('connectedAccount')
-  // console.log(connectedAccount)
 
   React.useEffect(() => {
-    (async () => {
-      await isWallectConnected().then(() => { console.log('Blockchain Loaded') })
-      await loadNfts()
-      await loadMyNfts()
-    })()
+    isWallectConnected().then(() => { console.log('Blockchain Loaded') })
   }, [])
 
   return (
@@ -32,12 +22,10 @@ const Main = () => {
       <ThemeProvider theme={themeMode}>
         <CssBaseline />
         <React.Suspense fallback={<React.Fragment />}>
-          <Header />
           <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/buynft" element={<BuyNft />} />
-            <Route path="/mycollection" element={<MyCollection />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/" element={<UserLayout />} />
+            <Route path="/user/*" element={<UserLayout />} />
+            <Route path="/admin/*" element={<AdminLayout />} />
           </Routes>
         </React.Suspense>
       </ThemeProvider>
