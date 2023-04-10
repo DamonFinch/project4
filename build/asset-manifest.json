@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.93a0497a.css",
+    "main.js": "/static/js/main.5736ddc5.js",
+    "static/js/787.2746eaee.chunk.js": "/static/js/787.2746eaee.chunk.js",
+    "static/media/background2.png": "/static/media/background2.b0221b2d3fc597d02d8b.png",
+    "static/media/HARVEST 5.png": "/static/media/HARVEST 5.4cc3eb133b07c3fa2520.png",
+    "static/media/HARVEST 6.png": "/static/media/HARVEST 6.4efed0e7193ffe2b4381.png",
+    "static/media/HARVEST 4.png": "/static/media/HARVEST 4.6f95051b9ba3a35f615d.png",
+    "static/media/background1.png": "/static/media/background1.20069bdcee06ae00d60d.png",
+    "static/media/HARVEST 3.png": "/static/media/HARVEST 3.4976b2bdecc80e4b99c3.png",
+    "static/media/HARVEST 1.png": "/static/media/HARVEST 1.48386e4bb8083b29fe36.png",
+    "static/media/background5.png": "/static/media/background5.12296ca145ec76b306e0.png",
+    "static/media/HARVEST 2.png": "/static/media/HARVEST 2.00a81f573905075707a9.png",
+    "static/media/background3.png": "/static/media/background3.de07ac1c290c398649a4.png",
+    "static/media/background4.png": "/static/media/background4.674de887ce9ec236c103.png",
+    "static/media/SILOS.png": "/static/media/SILOS.7e944bc17175f8d37534.png",
+    "static/media/SILOS 2.png": "/static/media/SILOS 2.4737529ccbcf5402de32.png",
+    "static/media/SILOS 1.png": "/static/media/SILOS 1.66b3ba304f3c399456f7.png",
+    "index.html": "/index.html",
+    "main.93a0497a.css.map": "/static/css/main.93a0497a.css.map",
+    "main.5736ddc5.js.map": "/static/js/main.5736ddc5.js.map",
+    "787.2746eaee.chunk.js.map": "/static/js/787.2746eaee.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.93a0497a.css",
+    "static/js/main.5736ddc5.js"
+  ]
+}
