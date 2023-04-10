@@ -2,7 +2,7 @@ import { ethers } from 'ethers'
 
 import abi from '../abis/contracts/Contract.sol/Contract.json'
 import address from '../abis/contractAddress.json'
-import { getGlobalState, setGlobalState } from '../store'
+import { getGlobalState, setGlobalState } from '../state/state'
 
 const { ethereum }: any = window
 const contractAddress = address.address
