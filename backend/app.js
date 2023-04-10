@@ -8,7 +8,7 @@ const cors = require('cors');
 
 const authRoutes = require('./routes/authRoutes');
 const newsRoutes = require('./routes/newsRoutes');
-const usersRoutes = require('./routes/UsersRoutes');
+const usersRoutes = require('./routes/usersRoutes');
 const globalErrHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
 
@@ -52,9 +52,9 @@ app.use(xss());
 app.use(hpp());
 
 // Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/user', usersRoutes);
-app.use('/api/news', newsRoutes);
+app.use('/auth', authRoutes);
+app.use('/user', usersRoutes);
+app.use('/news', newsRoutes);
 
 //handle undefined Routes
 app.use('*', (req, res, next) => {
