@@ -22,7 +22,7 @@ const app = express();
 // }));
 app.use(cors());
 //app.use(cors({
-//    origin: ['https://caladex.org', 'https://www.caladex.org', 'http://caladex.io', 'http://www.caladex.io'],
+//    origin: ['https://', 'https://www.', 'http://', 'http://'],
 //    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 //}));
 
