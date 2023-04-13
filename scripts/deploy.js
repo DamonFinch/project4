@@ -19,16 +19,18 @@ async function main() {
     console.log('Deployed contract address', contract.address)
   })
   
-  const amount = ethers.utils.parseEther('0.01')
+  const amount = ethers.utils.parseEther('0.5')
 
-  await contract.mint(1, 100);
+  await contract.mint(1, 150);
   await contract.mint(2, 100);
-  await contract.mint(5, 100);
-  await contract.mint(10, 100);
-  await contract.mint(20, 100);
-  await contract.mint(50, 100);
+  await contract.mint(5, 200);
+  await contract.mint(10, 200);
+  await contract.mint(20, 200);
+  await contract.mint(50, 150);
   await contract.mint(100, 100);
-  await contract.mint(200, 100);
+  await contract.mint(200, 50);
+  await contract.mint(500, 40);
+  await contract.mint(1000, 20);
   
   await contract.setApprovalForAll(contract.address, true);
 

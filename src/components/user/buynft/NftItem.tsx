@@ -1,13 +1,13 @@
 import * as React from 'react'
-import NftModal from './NftModal'
-
 import {
   NftDiv, ImgDiv, AmountDiv, SubTitleDiv, Text, EndDiv, SmallDiv, SmallText, PicDiv, DetailDiv, DetailP
 } from './styled/NftItem.styled'
 
+import NftModal from './NftModal'
+
 const NftItem = (props: any) => {
   const {
-    img, nftname, starts, price
+    img, name, amount, cost, starts
   } = props.nft
 
   const [open, setOpen] = React.useState(false)
@@ -27,10 +27,10 @@ const NftItem = (props: any) => {
         <DetailDiv onClick={handleOpen}>
           <DetailP>DETAIL</DetailP>
         </DetailDiv>
-        <AmountDiv>20</AmountDiv>
+        <AmountDiv>{amount}</AmountDiv>
       </PicDiv>
       <SubTitleDiv>
-        <Text>{nftname}</Text>
+        <Text>{name}</Text>
       </SubTitleDiv>
       <EndDiv>
         <SmallDiv>
@@ -39,10 +39,10 @@ const NftItem = (props: any) => {
         </SmallDiv>
         <SmallDiv>
           <SmallText>price</SmallText>
-          <Text>{price}</Text>
+          <Text>{cost} ETH</Text>
         </SmallDiv>
       </EndDiv>
-      <NftModal open={open} handleClose={handleClose} img={img} nftname={nftname} starts={starts} price={price} />
+      <NftModal open={open} handleClose={handleClose} img={img} nftname={name} starts={starts} price={cost} />
     </NftDiv>
   )
 }

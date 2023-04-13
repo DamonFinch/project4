@@ -6,9 +6,14 @@ export const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: '70%',
+  height: '70%',
+  overflow: 'scroll',
   bgcolor: 'background.paper',
   boxShadow: 24,
-  p: 4
+  p: 4,
+  '& .MuiGrid-container': {
+    marginBottom: 10
+  }
 }
 
 export const ImgDiv = tagStyled.img`
@@ -27,4 +32,9 @@ export const Price = tagStyled.p`
 `
 export const DataDiv = tagStyled.div`
     display: flex;
+`
+export const EndDiv = tagStyled.div`
+  width: 100%;
+  padding: 0;
+  margin: 0;
 `
