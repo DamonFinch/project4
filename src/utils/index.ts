@@ -151,7 +151,7 @@ const structuredNfts = (nfts: any) =>
   nfts
     .map((nft: any) => ({
       id: Number(nft.id),
-      img: 'https://solsapp.infura-ipfs.io/ipfs/QmP5BFkt73Z8YQbbNPE1WVWJyWmaRCdRSwLiWwzP1viYfN/' + nft.id + '.png',
+      img: 'https://solsapp.infura-ipfs.io/ipns/k51qzi5uqu5dgyuip586medz0jmfzsoafwiheia2jbq1a5hrn7s5xlystn9fsd/' + nft.id + '.png',
       url: opensea_uri + nft.id,
       owner: nft.owner,
       amount: Number(nft.amount),
