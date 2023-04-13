@@ -8,6 +8,7 @@ import { useGlobalState } from '../../state/state'
 const MyCollection = () => {
   const [nfts] = useGlobalState('myNfts')
 
+  const match1600 = useMediaQuery('(min-width: 1600px)')
   const match1300 = useMediaQuery('(min-width: 1300px)')
   const match1000 = useMediaQuery('(min-width: 1000px)')
   const match665 = useMediaQuery('(min-width: 665px)')
@@ -20,7 +21,7 @@ const MyCollection = () => {
       <Grid container spacing={7}>
         {
           nfts.map((nft, index) => (
-            <Grid item key={index} xs={match1300 ? 3 : (match1000 ? 4 : (match665 ? 6 : 12))}>
+            <Grid item key={index} xs={match1600 ? 2.4 : (match1300 ? 3 : (match1000 ? 4 : (match665 ? 6 : 12)))}>
               <NftItem nft={nft} />
             </Grid>
           ))

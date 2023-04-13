@@ -4,16 +4,10 @@ import { DescDiv, ButtonDiv, ImgDiv, MainDiv } from './styled/AboutUs.styled'
 import { TitleDiv } from './styled/Common.styled'
 import { Grid, useMediaQuery } from '@mui/material'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import HARVEST1 from 'src/assets/HARVEST 1.png'
-import HARVEST2 from 'src/assets/HARVEST 2.png'
-import HARVEST3 from 'src/assets/HARVEST 3.png'
-import HARVEST4 from 'src/assets/HARVEST 4.png'
-import HARVEST5 from 'src/assets/HARVEST 5.png'
-import HARVEST6 from 'src/assets/HARVEST 6.png'
+import img1 from 'src/assets/Landing/Rectangle 346.png'
 
 const AboutUs = () => {
   const match760 = useMediaQuery('(min-width: 760px)')
-  const AboutUsImg = [HARVEST1, HARVEST2, HARVEST3, HARVEST4, HARVEST5, HARVEST6]
 
   return (
     <MainDiv id="aboutus">
@@ -29,7 +23,7 @@ const AboutUs = () => {
           <ButtonDiv>View More<ArrowForwardIcon /></ButtonDiv>
         </Grid>
         <Grid item xs={match760 ? 7 : 12}>
-          <ImgDiv src={AboutUsImg[Math.floor(Math.random() * 10 % 3)]}>
+          <ImgDiv src={img1}>
           </ImgDiv>
         </Grid>
       </Grid>

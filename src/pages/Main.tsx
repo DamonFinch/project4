@@ -8,13 +8,17 @@ import { type ThemeModeProps } from 'src/types/hooks.types'
 import AdminLayout from 'src/pages/admin'
 import UserLayout from 'src/pages/user'
 
-import { isWallectConnected } from 'src/utils'
+import { isWallectConnected, loadNfts, loadMyNfts } from 'src/utils'
 
 const Main = () => {
   const { themeMode } = useThemeMode() as ThemeModeProps
 
   React.useEffect(() => {
-    isWallectConnected().then(() => { console.log('Blockchain Loaded') })
+    (async () => {
+      await isWallectConnected().then(() => { console.log('Blockchain Loaded') })
+      await loadNfts()
+      await loadMyNfts()
+    })()
   }, [])
 
   return (

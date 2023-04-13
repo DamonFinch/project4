@@ -4,11 +4,11 @@ import {
   ImgDiv
 } from './styled/Carousel.styled'
 
-import Img1 from 'src/assets/background1.png'
-import Img2 from 'src/assets/background2.png'
-import Img3 from 'src/assets/background3.png'
-import Img4 from 'src/assets/background4.png'
-import Img5 from 'src/assets/background5.png'
+import Img1 from 'src/assets/Landing/1.png'
+import Img2 from 'src/assets/Landing/2.png'
+import Img3 from 'src/assets/Landing/3.png'
+import Img4 from 'src/assets/Landing/4.png'
+import Img5 from 'src/assets/Landing/5.png'
 
 const Example = () => {
   const items = [

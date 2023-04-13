@@ -19,14 +19,17 @@ const Header = () => {
 
   const navs: LinkItem[] = [
     {
+      connectRequire: false,
       name: 'Home',
       link: '/user'
     },
     {
+      connectRequire: true,
       name: 'Buy NFT',
       link: '/user/buynft'
     },
     {
+      connectRequire: true,
       name: 'My Collection',
       link: '/user/mycollection'
     }
@@ -69,7 +72,7 @@ const Header = () => {
         <NavDiv>
           {
             navs.map((nav, index) => (
-              <LinkDiv to={nav.link} key={index}>{nav.name}</LinkDiv>
+              <LinkDiv to={nav.link} key={index} hidden={(nav.connectRequire && !connectedAccount)}>{nav.name}</LinkDiv>
             ))
           }
           {

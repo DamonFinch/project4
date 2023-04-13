@@ -17,6 +17,13 @@ contract Contract is ERC1155, Ownable {
         uint256 timestamp
     );
 
+    event Saled(
+        uint256[] ids,
+        uint256[] amounts,
+        address indexed to,
+        uint256 timestamp
+    );
+
     struct SaleStruct {
         uint256 id;
         uint256 amount;
@@ -38,6 +45,8 @@ contract Contract is ERC1155, Ownable {
         typeToId[50] = 6;
         typeToId[100] = 7;
         typeToId[200] = 8;
+        typeToId[500] = 9;
+        typeToId[1000] = 10;
     }
 
     function mint(uint256 nftType, uint256 amount) public onlyOwner {
@@ -45,7 +54,7 @@ contract Contract is ERC1155, Ownable {
 
         uint256 tokenId = typeToId[nftType];
         _mint(msg.sender, tokenId, amount, "");
-        uint256 cost = nftType * 0.01 ether;
+        uint256 cost = nftType * 0.5 ether;
 
         minted.push(
             SaleStruct(
@@ -72,6 +81,8 @@ contract Contract is ERC1155, Ownable {
             uint256 id = tokenIds[i];
             minted[id-1].amount = balanceOf(owner(), id);
         }
+
+        emit Saled(tokenIds, amounts, msg.sender, block.timestamp);
     }
     
     function getAllNFTs() public view returns (SaleStruct[] memory) {

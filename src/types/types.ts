@@ -5,6 +5,7 @@ export interface IMenuItem {
 }
 
 export interface LinkItem {
+  connectRequire: boolean
   name: string
   link: string
 }

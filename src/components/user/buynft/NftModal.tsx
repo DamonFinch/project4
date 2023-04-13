@@ -1,10 +1,13 @@
 import * as React from 'react'
+import { GoogleMap, KmlLayer } from '@react-google-maps/api'
+// import GoogleMapReact from 'google-map-react'
+
 import { type NftModalProps } from 'src/types/types'
 import {
   Modal, Box, Grid, Typography
 } from '@mui/material'
 import {
-  style, ImgDiv, Title, DataDiv, Starts, Price
+  style, ImgDiv, Title, DataDiv, Starts, Price, EndDiv
 } from './styled/NftModal.styled'
 
 const NftModal = ({
@@ -15,6 +18,28 @@ const NftModal = ({
   starts,
   price
 }: NftModalProps) => {
+  interface MapProps {
+    kmzUrl: string
+  }
+
+  const Map: React.FC<MapProps> = ({ kmzUrl }) => {
+    const mapContainerStyle = {
+      height: '500px',
+      width: '100%'
+    }
+
+    const center = {
+      lat: -21.50013671,
+      lng: -56.61308812
+    }
+
+    return (
+      <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={12}>
+        <KmlLayer url={kmzUrl} options={{ preserveViewport: true }} />
+      </GoogleMap>
+    )
+  }
+
   return (
     <div>
       <Modal
@@ -34,6 +59,10 @@ const NftModal = ({
               <DataDiv><Typography>Price:&nbsp;</Typography><Price>{price}</Price></DataDiv>
             </Grid>
           </Grid>
+          <EndDiv>
+            <Map kmzUrl='src/assets/map.kml' />
+            {/* <iframe src="https://www.google.com/maps/d/embed?mid=1CMBlp__hLc_4vt_Rp3fGncMJIuXgW8k&ehbc=2E312F" width="100%" height="480"></iframe> */}
+          </EndDiv>
         </Box>
       </Modal>
     </div>
