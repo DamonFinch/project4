@@ -1,5 +1,4 @@
 import * as React from 'react'
-// import { googleMapsApiKey } from 'src/shared/data'
 
 import {
   Box, Modal, TextField, Typography, RadioGroup, FormControlLabel, Radio
@@ -9,12 +8,14 @@ import {
 } from './styled/BuyNftModal.styled'
 import { findSumCombinations } from 'src/utils/helper/optimizedFunc'
 import { type BuyNftModalProps } from 'src/types/types'
+import { buyNFTFromServer } from 'src/utils'
 
 const BuyNftModal = ({
   open,
   handleClose
 }: BuyNftModalProps) => {
   const [price, setPrice] = React.useState(0)
+  const [buyMethod, SetBuyMethod] = React.useState(-1)
   const hectars = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
 
   const handleChange = (e: any) => {
@@ -23,12 +24,22 @@ const BuyNftModal = ({
     }
   }
 
+  const handleOptionChange = (e: any) => {
+    if (e.target.value !== '') {
+      SetBuyMethod(e.target.value)
+    }
+  }
+
   const displayPairs: number[][] = React.useMemo(() => {
     return findSumCombinations(hectars.reverse(), price)
   }, [price])
 
   const handleBuy = () => {
-    alert('Buy NFT!!!!!')
+    if (buyMethod < 0) {
+      alert('Please choose method!!!')
+      return
+    }
+    buyNFTFromServer(displayPairs[buyMethod])
   }
 
   return (
@@ -53,6 +64,7 @@ const BuyNftModal = ({
               key={i}
               value={i}
               control={<Radio />}
+              onChange={handleOptionChange}
               label = {
                 <MethodDiv>
                   {
