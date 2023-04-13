@@ -5,7 +5,7 @@ export const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: '70%',
+  width: '50%',
   height: '70%',
   overflow: 'scroll',
   bgcolor: 'background.paper',
@@ -15,7 +15,7 @@ export const style = {
   flexDirection: 'column',
   alignItems: 'flex-end',
   '& .MuiTextField-root': {
-    width: '30%',
+    width: '40%',
     marginBottom: 3,
     '& .MuiOutlinedInput-input': {
       textAlign: 'right'
