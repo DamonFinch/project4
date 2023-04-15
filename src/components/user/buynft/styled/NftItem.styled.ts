@@ -60,7 +60,7 @@ export const Text = tagStyled.p`
 
 export const SmallText = tagStyled.p`
   font-size: 12px;
-  color: #eee;
+  color: #000;
   margin: 0px;
 `
 

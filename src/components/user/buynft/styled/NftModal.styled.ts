@@ -17,7 +17,8 @@ export const style = {
 }
 
 export const ImgDiv = tagStyled.img`
-    width: 100%;
+    width: 90%;
+    padding: 5%;
 `
 export const Title = tagStyled.p`
     font-size: 24px;
@@ -35,6 +36,6 @@ export const DataDiv = tagStyled.div`
 `
 export const EndDiv = tagStyled.div`
   width: 100%;
-  padding: 0;
+  padding: 5%;
   margin: 0;
 `

@@ -9,6 +9,7 @@ const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
 const newsRoutes = require('./routes/newsRoutes');
 const usersRoutes = require('./routes/usersRoutes');
+const metadataRoutes = require('./routes/metadataRoutes');
 const globalErrHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
 
@@ -55,6 +56,7 @@ app.use(hpp());
 app.use('/auth', authRoutes);
 app.use('/user', usersRoutes);
 app.use('/news', newsRoutes);
+app.use('/metadata', metadataRoutes);
 
 //handle undefined Routes
 app.use('*', (req, res, next) => {

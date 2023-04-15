@@ -2,7 +2,7 @@ const { ethers } = require('hardhat')
 const fs = require('fs')
 
 async function main() {
-  const base_uri = 'https://ipfs.io/ipfs/QmTWbe9wDns7aqZQNCuWh5PqybGbBF91kngC5Zf8qmCoyg/'
+  const base_uri = 'http://judicialasset.com/api/metadata'
   const Contract = await ethers.getContractFactory('Contract')
   const contract = await Contract.deploy(base_uri)
   
