@@ -1,6 +1,10 @@
 const { ethers } = require('hardhat')
 const fs = require('fs')
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function main() {
   const base_uri = 'http://judicialasset.com/api/metadata'
   const Contract = await ethers.getContractFactory('Contract')
@@ -21,16 +25,36 @@ async function main() {
   
   const amount = ethers.utils.parseEther('0.5')
 
+  await sleep(20000);
   await contract.mint(1, 150);
+  await sleep(10000);
+  console.log("Successfully minted");
   await contract.mint(2, 100);
+  await sleep(10000);
+  console.log("Successfully minted");
   await contract.mint(5, 200);
+  await sleep(10000);
+  console.log("Successfully minted");
   await contract.mint(10, 200);
+  await sleep(10000);
+  console.log("Successfully minted");
   await contract.mint(20, 200);
+  await sleep(10000);
+  console.log("Successfully minted");
   await contract.mint(50, 150);
+  await sleep(10000);
+  console.log("Successfully minted");
   await contract.mint(100, 100);
+  await sleep(10000);
+  console.log("Successfully minted");
   await contract.mint(200, 50);
+  await sleep(10000);
+  console.log("Successfully minted");
   await contract.mint(500, 40);
+  await sleep(10000);
+  console.log("Successfully minted");
   await contract.mint(1000, 20);
+  await sleep(10000);
   
   await contract.setApprovalForAll(contract.address, true);
 
