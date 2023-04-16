@@ -58,6 +58,8 @@ app.use('/user', usersRoutes);
 app.use('/news', newsRoutes);
 app.use('/metadata', metadataRoutes);
 
+app.use('/images', express.static('images'));
+
 //handle undefined Routes
 app.use('*', (req, res, next) => {
     console.log(req.method);

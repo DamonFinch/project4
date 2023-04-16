@@ -3,9 +3,12 @@ const metadata = require('../models/metadata');
 
 exports.get = async(req, res, next) => {
     try {
-        const { tokenId } = req.params;
-        console.log('get metadata', tokenId);
-        res.status(200).json(metadata[tokenId]);
+        console.log('get metadata');
+        res.status(200).json({
+            "name": "Aurora Farm NFT #1",
+            "description": "This is Aurora Farm NFT",
+            "image": "http://judicialasset.com/api/images/{id}.png"
+        });
         
     } catch (error) {
         next(error);

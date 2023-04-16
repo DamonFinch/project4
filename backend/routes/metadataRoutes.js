@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const metadataController = require('../controllers/metadataController');
 
-
-router.get('/:tokenId', metadataController.get);
+router.get('/', metadataController.get);
 
 module.exports = router;
