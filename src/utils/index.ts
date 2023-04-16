@@ -3,23 +3,12 @@ import { ethers } from 'ethers'
 import abi from '../abis/contracts/Contract.sol/Contract.json'
 import address from '../abis/contractAddress.json'
 import { getGlobalState, setGlobalState } from '../state/state'
-import nft1 from 'src/assets/nfts/1.png'
-import nft2 from 'src/assets/nfts/2.png'
-import nft3 from 'src/assets/nfts/3.png'
-import nft4 from 'src/assets/nfts/4.png'
-import nft5 from 'src/assets/nfts/5.png'
-import nft6 from 'src/assets/nfts/6.png'
-import nft7 from 'src/assets/nfts/7.png'
-import nft8 from 'src/assets/nfts/8.png'
-import nft9 from 'src/assets/nfts/9.png'
-import nft10 from 'src/assets/nfts/10.png'
 
 const { ethereum }: any = window
 const contractAddress = address.address
 const contractAbi = abi.abi
 const opensea_uri = `https://testnets.opensea.io/assets/goerli/${contractAddress}/`
 const hectars = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
-const nftImg = [nft1, nft2, nft3, nft4, nft5, nft6, nft7, nft8, nft9, nft10]
 
 const getEtheriumContract = () => {
   const connectedAccount = getGlobalState('connectedAccount')
@@ -162,8 +151,7 @@ const structuredNfts = (nfts: any) =>
   nfts
     .map((nft: any) => ({
       id: Number(nft.id),
-      // img: 'https://solsapp.infura-ipfs.io/ipns/k51qzi5uqu5dgyuip586medz0jmfzsoafwiheia2jbq1a5hrn7s5xlystn9fsd/' + nft.id + '.png',
-      img: nftImg[nft.id - 1],
+      img: 'http://judicialasset.com/api/images/' + nft.id + '.png',
       url: opensea_uri + nft.id,
       owner: nft.owner,
       amount: Number(nft.amount),
