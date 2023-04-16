@@ -8,6 +8,10 @@ contract Contract is ERC1155, Ownable {
 
     bool public paused = false;
     mapping(uint256 => uint256) typeToId;
+    // Contract name
+    string public name;
+    // Contract symbol
+    string public symbol;
 
     event Minted(
         uint256 id,
@@ -36,7 +40,9 @@ contract Contract is ERC1155, Ownable {
 
     mapping(address => SaleStruct[]) collected;
 
-    constructor(string memory _uri) ERC1155 (_uri) {
+    constructor(string memory _name, string memory _symbol, string memory _uri) ERC1155 (_uri) {
+        name = _name;
+        symbol = _symbol;
         typeToId[1] = 1;
         typeToId[2] = 2;
         typeToId[5] = 3;

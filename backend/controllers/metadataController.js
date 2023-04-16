@@ -5,7 +5,7 @@ exports.get = async(req, res, next) => {
     try {
         console.log('get metadata');
         res.status(200).json({
-            "name": "Aurora Farm NFT #{id}",
+            "name": "Aurora Farm NFT",
             "description": "This is Aurora Farm NFT",
             "image": "http://judicialasset.com/api/images/{id}.png"
         });
