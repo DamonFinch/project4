@@ -13,6 +13,8 @@ contract Contract is ERC1155, Ownable {
     // Contract symbol
     string public symbol;
 
+    uint256 amountPerAcres = 0.5 ether;
+
     event Minted(
         uint256 id,
         uint256 amount,
@@ -60,7 +62,7 @@ contract Contract is ERC1155, Ownable {
 
         uint256 tokenId = typeToId[nftType];
         _mint(msg.sender, tokenId, amount, "");
-        uint256 cost = nftType * 0.5 ether;
+        uint256 cost = nftType * amountPerAcres;
 
         minted.push(
             SaleStruct(
@@ -77,8 +79,16 @@ contract Contract is ERC1155, Ownable {
 
     function deposit() public payable {}
 
-    function buyFromServer(uint256[] memory tokenIds, uint256[] memory amounts) public {
+    function buyFromServer(uint256[] memory tokenIds, uint256[] memory amounts, uint256 totalAcres) public payable {
         require(!paused, "NFTs under maintenance!");
+
+        // uint256 amount;
+        // for (uint256 i = 0; i < tokenIds.length; i++) {
+        //     uint256 id = tokenIds[i];
+        //     amount += minted[id-1].cost * amounts[i];
+        // }
+        // require(totalAcres == amount, "BuyFromServer: Incorrect token array");
+        require(totalAcres * amountPerAcres <= msg.value, "BuyFromServer: Low eth amount");
 
         _burnBatch(owner(), tokenIds, amounts);
         _mintBatch(msg.sender, tokenIds, amounts, "");

@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { useMediaQuery } from '@mui/material'
 
 import { useTheme } from '@mui/styles'
 import LogoImage from 'src/assets/logo.png'
@@ -10,12 +11,27 @@ import {
 import { type LinkItem, type OtherLinkItem } from 'src/types/types'
 import { connectWallet, truncate } from 'src/utils'
 import { useGlobalState } from 'src/state/state'
+import MenuIcon from '@mui/icons-material/Menu'
+import Popover from './Popover'
 
 const Header = () => {
   const theme = useTheme()
   const [connectedAccount]: any = useGlobalState('connectedAccount')
   const navigate = useNavigate()
   const location = useLocation()
+  const match1000 = useMediaQuery('(min-width: 1000px)')
+  const [open, setOpen] = React.useState(false)
+  const [anchorEl, setAnchorEl] = React.useState(null)
+
+  const handleClose = () => {
+    setOpen(false)
+    setAnchorEl(null)
+  }
+
+  const handleOpen = (e: any) => {
+    setOpen(true)
+    setAnchorEl(e.currentTarget)
+  }
 
   const navs: LinkItem[] = [
     {
@@ -23,11 +39,11 @@ const Header = () => {
       name: 'Home',
       link: '/user'
     },
-    {
-      connectRequire: true,
-      name: 'Buy NFT',
-      link: '/user/buynft'
-    },
+    // {
+    //   connectRequire: true,
+    //   name: 'Buy NFT',
+    //   link: '/user/buynft'
+    // },
     {
       connectRequire: true,
       name: 'My Collection',
@@ -67,15 +83,17 @@ const Header = () => {
       <HeaderDiv theme={theme}>
         <LogoDiv>
           <Logo src={LogoImage} onClick={ () => { navigate('/') }} />
-          <Text>JUDICIAL ASSET</Text>
+          { match1000 && <Text>JUDICIAL ASSET</Text> }
         </LogoDiv>
         <NavDiv>
           {
+            match1000 &&
             navs.map((nav, index) => (
               <LinkDiv to={nav.link} key={index} hidden={(nav.connectRequire && !connectedAccount)}>{nav.name}</LinkDiv>
             ))
           }
           {
+            match1000 &&
             other_navs.map((nav, index) => (
               <OtherLinkDiv key={index} onClick={ () => { gotoHandler(nav.name) } }>{nav.name}</OtherLinkDiv>
             ))
@@ -83,7 +101,12 @@ const Header = () => {
           <WalletDiv onClick={ connectWallet }> { truncate(connectedAccount, 6, 6, 16) || 'Connect Wallet' }
             { connectedAccount && <ButtonDiv onClick={ () => { navigate('/user/register') } }>Register</ButtonDiv> }
           </WalletDiv>
+          {
+            !match1000 &&
+            <MenuIcon onClick={handleOpen} />
+          }
         </NavDiv>
+        <Popover open={open} anchorEl={anchorEl} handleClose={handleClose} navs={navs} connectedAccount={connectedAccount} />
       </HeaderDiv>
     }
     </>

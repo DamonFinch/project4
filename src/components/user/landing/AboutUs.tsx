@@ -7,12 +7,13 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import img1 from 'src/assets/Landing/Rectangle 346.png'
 
 const AboutUs = () => {
-  const match760 = useMediaQuery('(min-width: 760px)')
+  const match760 = useMediaQuery('(min-width: 1000px)')
+  const match500 = useMediaQuery('(min-width: 600px)')
 
   return (
     <MainDiv id="aboutus">
       <Grid container>
-        <Grid item xs={match760 ? 5 : 12}>
+        <Grid item xs={match760 ? 6 : 12} className={match500 ? 'first' : ''}>
           <TitleDiv>AboutUs</TitleDiv>
           <DescDiv>
             The value of the Aurora Farm NFT is directly linked to the performance of the farm and agricultural production, which brings a certain stability and security to the investment.
@@ -22,7 +23,7 @@ const AboutUs = () => {
           </DescDiv>
           <ButtonDiv>View More<ArrowForwardIcon /></ButtonDiv>
         </Grid>
-        <Grid item xs={match760 ? 7 : 12}>
+        <Grid item xs={match760 ? 6 : 12} className='second'>
           <ImgDiv src={img1}>
           </ImgDiv>
         </Grid>

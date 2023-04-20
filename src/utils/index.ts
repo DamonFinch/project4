@@ -10,6 +10,13 @@ const contractAbi = abi.abi
 const opensea_uri = `https://testnets.opensea.io/assets/goerli/${contractAddress}/`
 const hectars = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
 
+const getEtheriumContractWithoutSigner = () => {
+  const provider = new ethers.providers.Web3Provider(ethereum)
+  const contract = new ethers.Contract(contractAddress, contractAbi, provider)
+
+  return contract
+}
+
 const getEtheriumContract = () => {
   const connectedAccount = getGlobalState('connectedAccount')
 
@@ -28,6 +35,7 @@ const isWallectConnected = async () => {
   try {
     if (!ethereum) { alert('Please install Metamask'); return }
     const accounts = await ethereum.request({ method: 'eth_accounts' })
+    console.log('account', accounts)
 
     if (window) {
       ethereum.on('chainChanged', (chainId: any) => {
@@ -82,7 +90,7 @@ const loadNfts = async () => {
       return
     }
 
-    const contract: any = getEtheriumContract()
+    const contract: any = getEtheriumContractWithoutSigner()
     const nfts = await contract.getAllNFTs()
     setGlobalState('nfts', structuredNfts(nfts))
   } catch (error) {
@@ -120,13 +128,14 @@ const loadMyNfts = async () => {
   }
 }
 
-const buyNFTFromServer = async (method: number[]) => {
+const buyNFTFromServer = async (method: number[], acres: any) => {
   try {
     if (!ethereum) {
       alert('Please install Metamask')
       return
     }
 
+    const connectedAccount = getGlobalState('connectedAccount')
     const contract: any = getEtheriumContract()
 
     const tokenIds: number[] = []
@@ -139,7 +148,13 @@ const buyNFTFromServer = async (method: number[]) => {
       }
     }
 
-    await contract.buyFromServer(tokenIds, amounts)
+    const amount: any = ethers.utils.parseEther('0.5')
+    console.log('amount', amount, amount.mul(acres))
+
+    await contract.buyFromServer(tokenIds, amounts, Number(acres), {
+      from: connectedAccount,
+      value: amount.mul(acres)._hex
+    })
 
     window.location.reload()
   } catch (error) {
@@ -166,5 +181,6 @@ export {
   loadNfts,
   loadMyNfts,
   buyNFTFromServer,
-  getEtheriumContract
+  getEtheriumContract,
+  getEtheriumContractWithoutSigner
 }

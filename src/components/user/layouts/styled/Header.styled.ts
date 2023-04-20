@@ -27,7 +27,7 @@ export const HeaderDiv = tagStyled.div`
     position : fixed;
     left : 0px;
     top : 0px;
-    z-index : 100000;
+    z-index : 10;
 
     box-shadow: 0px -2px 9px 1px gray;;
 `
@@ -42,6 +42,9 @@ export const LogoDiv = tagStyled.div`
 export const NavDiv = tagStyled.div`
     margin-right: 3rem;
     display: flex;
+    svg {
+      margin-left: 1rem;
+    }
 `
 export const LinkDiv = styled(Link)({
   textDecoration: 'none',
