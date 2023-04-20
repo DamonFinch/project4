@@ -39,7 +39,7 @@ const BuyNftModal = ({
       alert('Please choose method!!!')
       return
     }
-    buyNFTFromServer(displayPairs[buyMethod])
+    buyNFTFromServer(displayPairs[buyMethod], price)
   }
 
   return (

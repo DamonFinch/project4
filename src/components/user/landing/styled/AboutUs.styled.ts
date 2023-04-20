@@ -5,9 +5,15 @@ export const MainDiv = tagStyled.div`
     .MuiGrid-grid-xs-12 {
         margin-bottom: 20px;
     }
-    .MuiGrid-grid-xs-5 {
-        padding: 10px 60px 20px 73px;
-        height: 400px;
+    .first {
+        padding: 1rem 4rem 2rem 4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .second {
+        display: flex;
+        align-items: center;
     }
     svg {
         margin-left: 10px;
@@ -17,8 +23,6 @@ export const MainDiv = tagStyled.div`
 
 export const DescDiv = tagStyled.p`
     font-size: 16px;
-    height: 310px;
-    overflow: hidden;
 `
 
 export const ButtonDiv = tagStyled.div`
@@ -33,7 +37,6 @@ export const ButtonDiv = tagStyled.div`
 
 export const ImgDiv = tagStyled.img`
     width: 100%;
-    height: 460px;
     background-color: green;
     border-radius: 25px;
 `

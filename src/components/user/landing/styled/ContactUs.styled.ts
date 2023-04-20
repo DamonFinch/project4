@@ -11,14 +11,15 @@ export const useStyles = makeStyles(() => ({
 }))
 
 export const MainDiv = tagStyled.div`
-    margin-top: 50px;
-    margin-bottom: 50px;
-    padding-bottom: 30px;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
     background-color: #F3F3F3;
     .MuiGrid-grid-xs-12 {
-        padding-top: 40px;
-        padding-left: 75px;
-        padding-bottom: 30px;
+        padding-top: 2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-bottom: 1rem;
     }
     .MuiGrid-grid-xs-6 {
         padding: 10px 60px 20px 73px;
@@ -54,3 +55,9 @@ export const ButtonDiv = tagStyled.div`
     justify-content: center;
     align-items: center;
 `
+
+// display: -webkit-box;
+// overflow : hidden;
+// text-overflow: ellipsis;
+// -webkit-line-clamp: 3;
+// -webkit-box-orient: vertical;

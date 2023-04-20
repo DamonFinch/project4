@@ -5,9 +5,8 @@ export const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: '50%',
-  height: '70%',
-  overflow: 'scroll',
+  width: '500px',
+  height: '500px',
   bgcolor: 'background.paper',
   boxShadow: 24,
   p: 4,
@@ -15,7 +14,7 @@ export const style = {
   flexDirection: 'column',
   alignItems: 'flex-end',
   '& .MuiTextField-root': {
-    width: '40%',
+    width: '60%',
     marginBottom: 3,
     '& .MuiOutlinedInput-input': {
       textAlign: 'right'
@@ -30,7 +29,7 @@ export const TitleDiv = tagStyled.div`
   width: 100%;
   border-bottom: 1px solid black;
   border-color: #bbb;
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
   display: flex;
   justify-content: center;
 `
@@ -44,7 +43,7 @@ export const Text = tagStyled.p`
 export const FooterDiv = tagStyled.div`
   width: 100%;
   height: 100px;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
