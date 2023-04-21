@@ -70,6 +70,12 @@ export const MethodDiv = tagStyled.div`
   display: flex;
   width: 100%;
 `
+export const BodyDiv = tagStyled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+`
+
 export const EndDiv = tagStyled.div`
   width: 100%;
   height: 700px;

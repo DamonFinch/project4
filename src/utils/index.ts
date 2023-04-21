@@ -149,7 +149,6 @@ const buyNFTFromServer = async (method: number[], acres: any) => {
     }
 
     const amount: any = ethers.utils.parseEther('0.5')
-    console.log('amount', amount, amount.mul(acres))
 
     await contract.buyFromServer(tokenIds, amounts, Number(acres), {
       from: connectedAccount,

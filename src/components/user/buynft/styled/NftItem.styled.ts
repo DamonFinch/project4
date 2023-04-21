@@ -77,7 +77,19 @@ export const EndDiv = tagStyled.div`
   padding-right: 40px;
   margin-top: 10px;
   margin-bottom: 20px;
+  align-items: center;
 `
 
+export const BuyBtn = tagStyled.button`
+  background-color: #222;
+  border: 0;
+  color: white;
+  padding: 4px 10px;
+  :hover {
+    cursor: pointer;
+    background-color: black;
+    color: #aaa;
+  }
+`
 export const SmallDiv = tagStyled.div`
 `

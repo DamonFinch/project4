@@ -35,6 +35,12 @@ export interface BuyNftModalProps {
   handleClose: () => void
 }
 
+export interface BuyNftItemModalProps {
+  open: boolean
+  handleClose: () => void
+  nftId: number
+}
+
 export interface NavType {
   name: string
   link: string
