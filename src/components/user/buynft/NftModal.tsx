@@ -7,7 +7,7 @@ import {
   Modal, Box, Grid, Typography
 } from '@mui/material'
 import {
-  style, ImgDiv, Title, DataDiv, Starts, Price, EndDiv
+  style, ImgDiv, Title, DataDiv, Starts, Price
 } from './styled/NftModal.styled'
 
 const NftModal = ({
@@ -15,7 +15,6 @@ const NftModal = ({
   handleClose,
   img,
   nftname,
-  starts,
   price
 }: NftModalProps) => {
 //   interface MapProps {
@@ -53,13 +52,14 @@ const NftModal = ({
             <Grid item xs={6}>
               <Title>{nftname}</Title>
               <DataDiv><Typography>Starts:&nbsp;</Typography><Starts>Apr 15</Starts></DataDiv>
-              <DataDiv><Typography>Price:&nbsp;</Typography><Price>{price}</Price></DataDiv>
+              <DataDiv><Typography>Price:&nbsp;</Typography><Price>{price} ETH</Price></DataDiv>
+              <DataDiv><Typography>Description:&nbsp;</Typography>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</DataDiv>
             </Grid>
           </Grid>
-          <EndDiv>
-            <iframe src="https://www.google.com/maps/d/embed?mid=1CMBlp__hLc_4vt_Rp3fGncMJIuXgW8k&ehbc=2E312F" width="100%" height="580"></iframe>
+          {/* <EndDiv> */}
+            {/* <iframe src="https://www.google.com/maps/d/embed?mid=1CMBlp__hLc_4vt_Rp3fGncMJIuXgW8k&ehbc=2E312F" width="100%" height="580"></iframe> */}
             {/* <Map kmzUrl='src/assets/map.kml' /> */}
-          </EndDiv>
+          {/* </EndDiv> */}
         </Box>
       </Modal>
     </div>

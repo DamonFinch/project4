@@ -6,7 +6,7 @@ export const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: '70%',
-  height: '70%',
+  height: '60%',
   overflow: 'scroll',
   bgcolor: 'background.paper',
   boxShadow: 24,
