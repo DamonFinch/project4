@@ -7,8 +7,9 @@ import {
   style, TitleDiv, Text, FooterDiv, ButtonDiv, BodyDiv
 } from './styled/BuyNftModal.styled'
 import { type BuyNftItemModalProps } from 'src/types/types'
-import { buyNFTFromServer } from 'src/utils'
+import { buyNFTFromServer, connectWallet } from 'src/utils'
 import { useGlobalState } from 'src/state/state'
+import { useSnackbar } from 'notistack'
 
 const BuyNftItemModal = ({
   open,
@@ -20,6 +21,8 @@ const BuyNftItemModal = ({
   // const hectars = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
   const [nfts] = useGlobalState('nfts')
   const nft: any = nfts[nftId - 1]
+  const { enqueueSnackbar } = useSnackbar()
+  const [connectedAccount]: any = useGlobalState('connectedAccount')
 
   const handleChange = (e: any) => {
     if (e.target.value !== '') {
@@ -29,7 +32,7 @@ const BuyNftItemModal = ({
 
   const handleBuy = () => {
     const method = Array(amount).fill(nft.cost * 2)
-    buyNFTFromServer(method, amount * nft.cost * 2)
+    buyNFTFromServer(method, amount * nft.cost * 2, enqueueSnackbar)
   }
 
   return (
@@ -51,7 +54,11 @@ const BuyNftItemModal = ({
           />
         </BodyDiv>
         <FooterDiv>
-          <ButtonDiv onClick={handleBuy}>Buy</ButtonDiv>
+        {
+          connectedAccount
+            ? <ButtonDiv onClick={handleBuy}>Buy</ButtonDiv>
+            : <ButtonDiv onClick={connectWallet}>Connect Wallet</ButtonDiv>
+        }
         </FooterDiv>
       </Box>
     </Modal>

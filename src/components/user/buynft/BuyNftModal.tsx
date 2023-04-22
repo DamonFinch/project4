@@ -9,6 +9,7 @@ import {
 import { findSumCombinations } from 'src/utils/helper/optimizedFunc'
 import { type BuyNftModalProps } from 'src/types/types'
 import { buyNFTFromServer } from 'src/utils'
+import { useSnackbar } from 'notistack'
 
 const BuyNftModal = ({
   open,
@@ -17,6 +18,7 @@ const BuyNftModal = ({
   const [price, setPrice] = React.useState(0)
   const [buyMethod, SetBuyMethod] = React.useState(-1)
   const hectars = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
+  const { enqueueSnackbar } = useSnackbar()
 
   const handleChange = (e: any) => {
     if (e.target.value !== '') {
@@ -39,7 +41,7 @@ const BuyNftModal = ({
       alert('Please choose method!!!')
       return
     }
-    buyNFTFromServer(displayPairs[buyMethod], price)
+    buyNFTFromServer(displayPairs[buyMethod], price, enqueueSnackbar)
   }
 
   return (

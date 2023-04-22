@@ -50,7 +50,7 @@ export const FooterDiv = tagStyled.div`
 `
 
 export const ButtonDiv = tagStyled.div`
-  width: 120px;
+  width: 150px;
   height: 50px;
   display: flex;
   background-color: white;
