@@ -3,6 +3,7 @@ import { ethers } from 'ethers'
 import abi from '../abis/contracts/Contract.sol/Contract.json'
 import address from '../abis/contractAddress.json'
 import { getGlobalState, setGlobalState } from '../state/state'
+import { displayErrorMessage } from './errors'
 
 const { ethereum }: any = window
 const contractAddress = address.address
@@ -128,7 +129,7 @@ const loadMyNfts = async () => {
   }
 }
 
-const buyNFTFromServer = async (method: number[], acres: any) => {
+const buyNFTFromServer = async (method: number[], acres: any, enqueueSnackbar: any) => {
   try {
     if (!ethereum) {
       alert('Please install Metamask')
@@ -156,8 +157,8 @@ const buyNFTFromServer = async (method: number[], acres: any) => {
     })
 
     window.location.reload()
-  } catch (error) {
-    reportError(error)
+  } catch (error: any) {
+    displayErrorMessage(enqueueSnackbar, error)
   }
 }
 
