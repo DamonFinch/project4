@@ -4,7 +4,7 @@ import {
   Box, Modal, TextField, Typography, RadioGroup, FormControlLabel, Radio
 } from '@mui/material'
 import {
-  style, TitleDiv, Text, FooterDiv, ButtonDiv, MethodDiv
+  style, TitleDiv, Text, FooterDiv, ButtonDiv, MethodDiv, TopDiv
 } from './styled/BuyNftModal.styled'
 import { findSumCombinations } from 'src/utils/helper/optimizedFunc'
 import { type BuyNftModalProps } from 'src/types/types'
@@ -17,7 +17,7 @@ const BuyNftModal = ({
 }: BuyNftModalProps) => {
   const [price, setPrice] = React.useState(0)
   const [buyMethod, SetBuyMethod] = React.useState(-1)
-  const hectars = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
+  const revertHectars = [1000, 500, 200, 100, 50, 20, 10, 5, 2, 1]
   const { enqueueSnackbar } = useSnackbar()
 
   const handleChange = (e: any) => {
@@ -33,7 +33,7 @@ const BuyNftModal = ({
   }
 
   const displayPairs: number[][] = React.useMemo(() => {
-    return findSumCombinations(hectars.reverse(), price)
+    return findSumCombinations(revertHectars, price)
   }, [price])
 
   const handleBuy = () => {
@@ -52,9 +52,12 @@ const BuyNftModal = ({
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
+        <TopDiv>
+          <Typography onClick={handleClose}>&times;</Typography>
+        </TopDiv>
         <TitleDiv><Text>Buy NFT</Text></TitleDiv>
         <TextField
-          variant='outlined'
+          variant='standard'
           onChange={handleChange}
           value={price}
           type='number'
@@ -70,15 +73,15 @@ const BuyNftModal = ({
               label = {
                 <MethodDiv>
                   {
-                    hectars.map((hectar, j) => (
-                      <Typography key={j}>
+                    revertHectars.map((hectar, j) => (
+                      <Typography key={j} style={{ display: 'flex', alignItems: 'center', marginTop: 5 }}>
                       {
                         method.filter(x => x === hectar).length !== 0 &&
                         <>
-                          {hectar}
-                          x
+                          <img src={`http://judicialasset.com/api/images/${10 - j}.png`} width="70px" height="70px" />
+                          &nbsp;x
                           {method.filter(x => x === hectar).length}
-                          &nbsp;
+                          &nbsp;&nbsp;
                         </>
                       }
                       </Typography>

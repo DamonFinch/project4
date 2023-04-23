@@ -7,6 +7,7 @@ import BuyNftModal from 'src/components/user/buynft/BuyNftModal'
 import { useGlobalState } from '../../state/state'
 import ConnectWallet from '../../components/user/buynft/ConnectWallet'
 import { connectWallet } from 'src/utils'
+import detail from 'src/assets/details.json'
 
 const BuyNft = () => {
   const [connectedAccount]: any = useGlobalState('connectedAccount')
@@ -42,7 +43,7 @@ const BuyNft = () => {
         {
           nfts.map((nft, index) => (
             <Grid item key={index} xs={match1600 ? 2.4 : (match1300 ? 3 : (match1000 ? 4 : (match665 ? 6 : 12)))}>
-              <NftItem nft={nft} />
+              <NftItem nft={nft} detail={detail[index]}/>
             </Grid>
           ))
         }

@@ -5,37 +5,48 @@ export const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: '500px',
-  height: '500px',
+  width: '640px',
   bgcolor: 'background.paper',
   boxShadow: 24,
-  p: 4,
+  padding: '13px 20px',
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'flex-end',
+  alignItems: 'center',
   '& .MuiTextField-root': {
-    width: '60%',
+    width: '70%',
     marginBottom: 3,
     '& .MuiOutlinedInput-input': {
       textAlign: 'right'
     }
   },
   '& .MuiFormGroup-root': {
-    width: '100%'
+    width: '70%'
   }
 }
 
+export const TopDiv = tagStyled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0px !important;
+  padding: 0px !important;
+  .MuiTypography-root {
+    font-size: 28px !important;
+    :hover {
+      cursor: pointer;
+    }
+  }
+`
+
 export const TitleDiv = tagStyled.div`
   width: 100%;
-  border-bottom: 1px solid black;
   border-color: #bbb;
-  margin-bottom: 2rem;
   display: flex;
   justify-content: center;
 `
 export const Text = tagStyled.p`
-  font-size: 48px;
-  font-weight: 800;
+  font-size: 32px;
+  font-weight: 600;
   margin: 0px;
   padding-bottom: 40px;
 `
@@ -50,10 +61,11 @@ export const FooterDiv = tagStyled.div`
 `
 
 export const ButtonDiv = tagStyled.div`
-  width: 150px;
+  width: 70%;
   height: 50px;
   display: flex;
-  background-color: white;
+  background-color: #222;
+  color: white;
   justify-content: center;
   align-items: center;
   border: 1px solid black;
@@ -74,6 +86,7 @@ export const BodyDiv = tagStyled.div`
   display: flex;
   width: 100%;
   align-items: center;
+  justify-content: center;
 `
 
 export const EndDiv = tagStyled.div`

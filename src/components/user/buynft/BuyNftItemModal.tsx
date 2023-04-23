@@ -1,10 +1,10 @@
 import * as React from 'react'
 
 import {
-  Box, Modal, TextField
+  Box, Modal, TextField, Typography
 } from '@mui/material'
 import {
-  style, TitleDiv, Text, FooterDiv, ButtonDiv, BodyDiv
+  style, TitleDiv, Text, FooterDiv, ButtonDiv, BodyDiv, TopDiv
 } from './styled/BuyNftModal.styled'
 import { type BuyNftItemModalProps } from 'src/types/types'
 import { buyNFTFromServer, connectWallet } from 'src/utils'
@@ -43,11 +43,13 @@ const BuyNftItemModal = ({
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <TitleDiv><Text>Buy NFT</Text></TitleDiv>
+        <TopDiv>
+          <Typography onClick={handleClose}>&times;</Typography>
+        </TopDiv>
+        <TitleDiv><Text>Buy {nft.cost * 2} Acres NFT</Text></TitleDiv>
         <BodyDiv>
-          {nft.cost * 2} Acres X&nbsp;
           <TextField
-            variant='outlined'
+            variant="standard"
             onChange={handleChange}
             value={amount}
             type='number'

@@ -28,6 +28,8 @@ export interface NftModalProps {
   nftname: string
   starts: string
   price: string
+  detail: any
+  nftId: any
 }
 
 export interface BuyNftModalProps {

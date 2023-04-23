@@ -4,18 +4,21 @@ import * as React from 'react'
 import './styled/styles.css'
 import { type NftModalProps } from 'src/types/types'
 import {
-  Modal, Box, Grid, Typography
+  Modal, Box, Grid, Typography, useMediaQuery
 } from '@mui/material'
 import {
-  style, ImgDiv, Title, DataDiv, Starts, Price
+  style, ImgDiv, Title, DataDiv, Price, ButtonDiv, FirstDiv, DescP, MiddleDiv, FooterDiv, ContentDiv, ContentHeader, TopDiv
 } from './styled/NftModal.styled'
+import BuyNftItemModal from './BuyNftItemModal'
 
 const NftModal = ({
   open,
   handleClose,
   img,
   nftname,
-  price
+  price,
+  detail,
+  nftId
 }: NftModalProps) => {
 //   interface MapProps {
 //     kmzUrl: string
@@ -34,7 +37,33 @@ const NftModal = ({
 //         <KmlLayer url={kmzUrl} options={{ preserveViewport: true }} />
 //       </GoogleMap>
 //     )
-//   }
+//   }\
+
+  const match800 = useMediaQuery('(min-width: 800px)')
+
+  const detailHeaders = [
+    'Bioceanic Route: ',
+    'Natural Diversity of Bonito: ',
+    'Trading with Bags of Soybeans: ',
+    'Productive and Touristic Potential: '
+  ]
+
+  const details = [
+    'The farm is strategically located on the edge of the Bioceanic Route, an infrastructure project that will connect Brazil to the Pacific Ocean, passing through Paraguay, Argentina, and Chile. This connection promises to boost economic development and significantly appreciate nearby properties, such as the farm in question. By acquiring it, you will invest in an asset with great potential for future appreciation',
+    'The farm is nestled within the lush natural landscape of Bonito, known worldwide for its crystal-clear waters, rivers, waterfalls, and caves. As the owner of this farm, you will enjoy a peaceful and preserved environment, where you can observe the rich local biodiversity and even encounter some of its "distinguished guests", such as macaws, jaguars, and capybaras.',
+    'If we obtain a favorable decision on repossession in the future, our team will put your farm up for sale, with the possibility of doing so using bags of soybeans as a means of exchange. This offers various benefits, such as protection against inflation and currency depreciation, in addition to allowing you to benefit from the growing demand for this commodity in the global market',
+    "The farm has ideal areas for cultivating soybeans, corn, and other crops, as well as for raising Nelore cattle, ensuring a constant financial return. Furthermore, the proximity to Bonito and its tourist attractions offers the possibility of exploring the property's touristic potential, creating eco-friendly accommodations or activities focused on ecotourism"
+  ]
+
+  const [buyItemOpen, setBuyItemOpen] = React.useState(false)
+
+  const handleBuyItemOpen = () => {
+    setBuyItemOpen(true)
+  }
+
+  const handleBuyItemClose = () => {
+    setBuyItemOpen(false)
+  }
 
   return (
     <div>
@@ -45,21 +74,38 @@ const NftModal = ({
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Grid container spacing={3}>
-            <Grid item xs={6}>
+          <TopDiv>
+            <Typography onClick={handleClose}>&times;</Typography>
+          </TopDiv>
+          <Grid container spacing={5}>
+            <Grid item xs={match800 ? 4 : 12}>
               <ImgDiv src={img} />
-            </Grid>
-            <Grid item xs={6}>
               <Title>{nftname}</Title>
-              <DataDiv><Typography>Starts:&nbsp;</Typography><Starts>Apr 15</Starts></DataDiv>
-              <DataDiv><Typography>Price:&nbsp;</Typography><Price>{price} ETH</Price></DataDiv>
-              <DataDiv><Typography>Description:&nbsp;</Typography>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</DataDiv>
+              <DataDiv><Typography>Price</Typography><Price>{price} ETH</Price></DataDiv>
+              <ButtonDiv onClick={handleBuyItemOpen}>Buy</ButtonDiv>
+            </Grid>
+            <Grid item xs={match800 ? 8 : 12}>
+              <FirstDiv>
+                <Typography>{detail.title}</Typography>
+                <DescP>{detail.description}</DescP>
+              </FirstDiv>
+              <MiddleDiv>
+                <Typography>Aurora Farm NFT</Typography>
+                <DescP>Imagine being the owner of a unique and exceptional farm, located in one of the mostbeautiful and promising regions of Brazil, where nature and economic development coexistharmoniously. This is the opportunity we must present to you: a judicial asset that allows youto claim rights over a one-of-a-kind farm, located 65 km from Bonito, Mato Grosso do Sul, with the Bioceanic Route passing in front of the property and the future possibility of profiting from a transaction based on bags of soybeans. Here are some of the main reasons why you shouldn&apos;t miss this chance:</DescP>
+              </MiddleDiv>
+              <FooterDiv>
+              {
+                details.map((detail, index) => (
+                  <ContentDiv key={index}>
+                    <ContentHeader>{detailHeaders[index]}</ContentHeader>
+                    <DescP>{detail}</DescP>
+                  </ContentDiv>
+                ))
+              }
+              </FooterDiv>
             </Grid>
           </Grid>
-          {/* <EndDiv> */}
-            {/* <iframe src="https://www.google.com/maps/d/embed?mid=1CMBlp__hLc_4vt_Rp3fGncMJIuXgW8k&ehbc=2E312F" width="100%" height="580"></iframe> */}
-            {/* <Map kmzUrl='src/assets/map.kml' /> */}
-          {/* </EndDiv> */}
+          <BuyNftItemModal open={buyItemOpen} handleClose={handleBuyItemClose} nftId={nftId} />
         </Box>
       </Modal>
     </div>
