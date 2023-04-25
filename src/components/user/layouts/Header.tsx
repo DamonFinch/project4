@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useMediaQuery } from '@mui/material'
-
 import { useTheme } from '@mui/styles'
 import LogoImage from 'src/assets/logo.png'
 import {
@@ -19,7 +18,7 @@ const Header = () => {
   const [connectedAccount]: any = useGlobalState('connectedAccount')
   const navigate = useNavigate()
   const location = useLocation()
-  const match1000 = useMediaQuery('(min-width: 1000px)')
+  const match1000 = useMediaQuery('(min-width: 1200px)')
   const [open, setOpen] = React.useState(false)
   const [anchorEl, setAnchorEl] = React.useState(null)
 
@@ -36,14 +35,9 @@ const Header = () => {
   const navs: LinkItem[] = [
     {
       connectRequire: false,
-      name: 'Home',
+      name: 'Introduction',
       link: '/user'
     },
-    // {
-    //   connectRequire: true,
-    //   name: 'Buy NFT',
-    //   link: '/user/buynft'
-    // },
     {
       connectRequire: true,
       name: 'My Collection',
@@ -52,12 +46,13 @@ const Header = () => {
   ]
 
   const other_navs: OtherLinkItem[] = [
-    {
-      name: 'About Us'
-    },
-    {
-      name: 'Contact Us'
-    }
+    // { name: 'About Us' },
+    { name: 'Legal' },
+    { name: 'Differentials' },
+    { name: 'Targets and potential' },
+    { name: 'Value increase' },
+    { name: 'Juridical' }
+    // { name: 'Contact Us' }
   ]
 
   const gotoHandler = (name: string) => {
@@ -67,6 +62,16 @@ const Header = () => {
       ref = document.getElementById('aboutus')
     } else if (name === 'Contact Us') {
       ref = document.getElementById('contactus')
+    } else if (name === 'Legal') {
+      ref = document.getElementById('legal')
+    } else if (name === 'Differentials') {
+      ref = document.getElementById('differentials')
+    } else if (name === 'Targets and potential') {
+      ref = document.getElementById('protential')
+    } else if (name === 'Value increase') {
+      ref = document.getElementById('increase')
+    } else if (name === 'Juridical') {
+      ref = document.getElementById('juridical')
     }
     const offsetTop = ref !== null ? ref.offsetTop : 0
     window.scrollTo({

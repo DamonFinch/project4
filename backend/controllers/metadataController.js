@@ -7,7 +7,7 @@ exports.get = async(req, res, next) => {
         res.status(200).json({
             "name": "Aurora Farm NFT",
             "description": "This is Aurora Farm NFT",
-            "image": "http://judicialasset.com/api/images/{id}.png"
+            "image": "http://app.judicialasset.com/api/images/{id}.png"
         });
         
     } catch (error) {

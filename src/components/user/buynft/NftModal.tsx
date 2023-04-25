@@ -1,7 +1,6 @@
 import * as React from 'react'
 // import { GoogleMap, KmlLayer } from '@react-google-maps/api'
 // import GoogleMapReact from 'google-map-react'
-import './styled/styles.css'
 import { type NftModalProps } from 'src/types/types'
 import {
   Modal, Box, Grid, Typography, useMediaQuery

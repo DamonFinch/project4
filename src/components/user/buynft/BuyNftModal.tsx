@@ -78,7 +78,7 @@ const BuyNftModal = ({
                       {
                         method.filter(x => x === hectar).length !== 0 &&
                         <>
-                          <img src={`http://judicialasset.com/api/images/${10 - j}.png`} width="70px" height="70px" />
+                          <img src={`http://app.judicialasset.com/api/images/${10 - j}.png`} width="70px" height="70px" />
                           &nbsp;x
                           {method.filter(x => x === hectar).length}
                           &nbsp;&nbsp;

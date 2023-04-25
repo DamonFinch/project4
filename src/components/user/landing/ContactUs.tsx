@@ -1,38 +1,51 @@
 import * as React from 'react'
 
-import { useStyles, MainDiv, ButtonDiv } from './styled/ContactUs.styled'
-import { TitleDiv } from './styled/Common.styled'
+import { ContactList, MainDiv, SubTitle } from './styled/ContactUs.styled'
 import { Grid, useMediaQuery } from '@mui/material'
 
-import TwitterIcon from '@mui/icons-material/Twitter'
-import FacebookIcon from '@mui/icons-material/Facebook'
-import YouTubeIcon from '@mui/icons-material/YouTube'
-import GitHubIcon from '@mui/icons-material/GitHub'
-
 const ContactUs = () => {
-  const classes = useStyles()
+  const aboutus = ['Company', 'Careers', 'News']
+  const support = ['Contact Us', 'Knowledge Base', 'Product Help Center']
+  const partner = ['Agencies', 'Associations', 'Francises', 'Affilates', 'Offers']
+  const onairn = ['SharpSpring', 'Retention Science']
 
-  const match800 = useMediaQuery('(min-width: 800px)')
+  const match1040 = useMediaQuery('(min-width: 1040px)')
+  // const match650 = useMediaQuery('(min-width: 650px)')
 
   return (
     <MainDiv id="contactus">
       <Grid container>
-        <Grid item xs={12}>
-          <TitleDiv style={{ paddingLeft: match800 ? '2rem' : '' }}>Contact Us</TitleDiv>
+        <Grid item xs={match1040 ? 3 : 6}>
+          <SubTitle>About Us</SubTitle>
+          {
+            aboutus.map((d, i) => (
+              <ContactList key={i}>{d}</ContactList>
+            ))
+          }
         </Grid>
-        <Grid item xs={match800 ? 6 : 12}>
-          <input type='text' placeholder='Name' />
-          <input type='text' placeholder='Email Address' />
-          <textarea placeholder='Message' />
-          <div style={{ display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
-            <ButtonDiv>Send</ButtonDiv>
-          </div>
+        <Grid item xs={match1040 ? 3 : 6}>
+        <SubTitle>Support</SubTitle>
+          {
+            support.map((d, i) => (
+              <ContactList key={i}>{d}</ContactList>
+            ))
+          }
         </Grid>
-        <Grid item xs={match800 ? 6 : 12} className={classes.right}>
-          <TwitterIcon />
-          <FacebookIcon />
-          <YouTubeIcon />
-          <GitHubIcon />
+        <Grid item xs={match1040 ? 3 : 6}>
+        <SubTitle>Become a Partner</SubTitle>
+          {
+            partner.map((d, i) => (
+              <ContactList key={i}>{d}</ContactList>
+            ))
+          }
+        </Grid>
+        <Grid item xs={match1040 ? 3 : 6}>
+        <SubTitle>Constant Contact Onairn</SubTitle>
+          {
+            onairn.map((d, i) => (
+              <ContactList key={i}>{d}</ContactList>
+            ))
+          }
         </Grid>
       </Grid>
     </MainDiv>
