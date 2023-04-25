@@ -1,1 +1,1 @@
-export const API_ENDPOINT = 'http://judicialasset.com/api/'
+export const API_ENDPOINT = 'http://app.judicialasset.com/api/'

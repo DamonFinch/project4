@@ -60,9 +60,8 @@ export const MainDiv = tagStyled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 5rem 2rem 5rem 2rem;
+    padding: 5rem 5rem;
     height: 100%;
-    background-color: #e8e8e8;
 `
 export const TitleDiv = tagStyled.div`
     width: 100%;

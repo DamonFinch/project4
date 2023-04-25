@@ -166,7 +166,7 @@ const structuredNfts = (nfts: any) =>
   nfts
     .map((nft: any) => ({
       id: Number(nft.id),
-      img: 'http://judicialasset.com/api/images/' + nft.id + '.png',
+      img: 'http://app.judicialasset.com/api/images/' + nft.id + '.png',
       url: opensea_uri + nft.id,
       owner: nft.owner,
       amount: Number(nft.amount),

@@ -22,17 +22,16 @@ export const HeaderDiv = tagStyled.div`
     height : 90px;
     width : 100%;
     
-    background : white;
+    background : rgba(0, 0, 0, 0.3);
 
     position : fixed;
     left : 0px;
     top : 0px;
     z-index : 10;
-
-    box-shadow: 0px -2px 9px 1px gray;;
 `
 export const Text = tagStyled.p`
     font-size: 25px;
+    color: white;
 `
 export const LogoDiv = tagStyled.div`
     display: flex;
@@ -44,18 +43,19 @@ export const NavDiv = tagStyled.div`
     display: flex;
     svg {
       margin-left: 1rem;
+      color: white;
     }
 `
 export const LinkDiv = styled(Link)({
   textDecoration: 'none',
-  color: 'black',
-  marginLeft: '1rem',
+  color: 'white',
+  marginLeft: '2rem',
   padding: 5
 })
 export const OtherLinkDiv = tagStyled.div`
   text-decoration: none;
-  color: black;
-  margin-left: 1rem;
+  color: white;
+  margin-left: 2rem;
   padding: 5px;
   cursor: pointer;
 `
@@ -76,8 +76,8 @@ export const WalletDiv = tagStyled.div`
   width: 150px;
   height: 30px;
   margin-left: 40px;
-  background-color: #181818;
-  color: white;
+  background-color: #e8e8e8;
+  color: black;
   display: flex;
   justify-content: center;
   align-items: center;

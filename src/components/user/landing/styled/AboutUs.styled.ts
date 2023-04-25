@@ -1,19 +1,39 @@
 import tagStyled from 'styled-components'
+import backImg from 'src/assets/Group 76.png'
 
 export const MainDiv = tagStyled.div`
+    background-image: url('${backImg}');
+    width: 100%;
+    background-size: 100% 100%;
+
     margin-top: 50px;
+    .MuiGrid-container {
+        padding-bottom: 1.5rem;
+        border-bottom: 2px solid #aaa;
+    }
     .MuiGrid-grid-xs-12 {
-        margin-bottom: 20px;
+        margin-bottom: 2rem;
     }
     .first {
-        padding: 1rem 4rem 2rem 4rem;
+        padding: 1rem 4rem 2rem 0rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
     .second {
         display: flex;
+        justify-content: flex-end;
         align-items: center;
+    }
+    .second1260 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .second700 {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
     }
     svg {
         margin-left: 10px;
@@ -22,7 +42,7 @@ export const MainDiv = tagStyled.div`
 `
 
 export const DescDiv = tagStyled.p`
-    font-size: 16px;
+    font-size: 19px;
 `
 
 export const ButtonDiv = tagStyled.div`
