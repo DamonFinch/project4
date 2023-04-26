@@ -43,7 +43,7 @@ const BuyNft = () => {
         {
           nfts.map((nft, index) => (
             <Grid item key={index} xs={match1600 ? 2.4 : (match1300 ? 3 : (match1000 ? 4 : (match665 ? 6 : 12)))}>
-              <NftItem nft={nft} detail={detail[index]}/>
+              <NftItem nft={nft} detail={detail[index]} forSale={true} />
             </Grid>
           ))
         }

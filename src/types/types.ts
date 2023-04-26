@@ -28,6 +28,7 @@ export interface NftModalProps {
   nftname: string
   starts: string
   price: string
+  forSale: boolean
   detail: any
   nftId: any
 }

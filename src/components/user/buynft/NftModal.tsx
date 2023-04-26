@@ -17,6 +17,7 @@ const NftModal = ({
   nftname,
   price,
   detail,
+  forSale,
   nftId
 }: NftModalProps) => {
 //   interface MapProps {
@@ -81,7 +82,7 @@ const NftModal = ({
               <ImgDiv src={img} />
               <Title>{nftname}</Title>
               <DataDiv><Typography>Price</Typography><Price>{price} ETH</Price></DataDiv>
-              <ButtonDiv onClick={handleBuyItemOpen}>Buy</ButtonDiv>
+              { forSale && <ButtonDiv onClick={handleBuyItemOpen}>Buy</ButtonDiv> }
             </Grid>
             <Grid item xs={match800 ? 8 : 12}>
               <FirstDiv>
