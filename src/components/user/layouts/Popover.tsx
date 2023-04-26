@@ -16,6 +16,7 @@ const MyPopover = ({
   gotoHandler,
   connectedAccount
 }: any) => {
+  console.log(navs)
   return (
     <Popover
       open={open}
@@ -34,8 +35,8 @@ const MyPopover = ({
       <List>
       {
         navs.map((nav: any, index: number) => (
-          !nav.connectRequire && <ListItem key={index}>
-            <LinkDiv to={nav.link} hidden={(nav.connectRequire && !connectedAccount)}>{nav.name}</LinkDiv>
+          !(nav.connectRequire && !connectedAccount) && <ListItem key={index}>
+            <LinkDiv to={nav.link} >{nav.name}</LinkDiv>
           </ListItem>
         ))
       }

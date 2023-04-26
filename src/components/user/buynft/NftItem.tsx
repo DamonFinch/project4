@@ -12,7 +12,7 @@ const NftItem = (props: any) => {
   } = props.nft
 
   const {
-    detail
+    detail, forSale
   } = props
 
   const [open, setOpen] = React.useState(false)
@@ -52,10 +52,10 @@ const NftItem = (props: any) => {
           <Text>{cost} ETH</Text>
         </SmallDiv>
         <SmallDiv>
-          <BuyBtn onClick={handleBuyItemOpen}>Buy Now</BuyBtn>
+          { forSale && <BuyBtn onClick={handleBuyItemOpen}>Buy Now</BuyBtn> }
         </SmallDiv>
       </EndDiv>
-      <NftModal open={open} handleClose={handleClose} img={img} nftname={name} starts={starts} price={cost} detail={detail} nftId={id}/>
+      <NftModal open={open} handleClose={handleClose} img={img} nftname={name} starts={starts} price={cost} detail={detail} nftId={id} forSale={forSale} />
       <BuyNftItemModal open={buyItemOpen} handleClose={handleBuyItemClose} nftId={id} />
     </NftDiv>
   )

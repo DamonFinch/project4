@@ -4,6 +4,7 @@ import { Grid, useMediaQuery } from '@mui/material'
 
 import NftItem from 'src/components/user/buynft/NftItem'
 import { useGlobalState } from '../../state/state'
+import detail from 'src/assets/details.json'
 
 const MyCollection = () => {
   const [nfts] = useGlobalState('myNfts')
@@ -22,7 +23,7 @@ const MyCollection = () => {
         {
           nfts.map((nft, index) => (
             <Grid item key={index} xs={match1600 ? 2.4 : (match1300 ? 3 : (match1000 ? 4 : (match665 ? 6 : 12)))}>
-              <NftItem nft={nft} />
+              <NftItem nft={nft} detail={detail[index]} />
             </Grid>
           ))
         }
