@@ -22,6 +22,9 @@ export const PicDiv = tagStyled.div`
 
 export const MainDiv = tagStyled.div`
     margin-bottom: 10rem;
+    @media screen and (max-width : 450px) {
+        margin-bottom: 4rem;
+    }
     .MuiTypography-root {
         margin-top: -2rem;
         font-size: 17px;

@@ -4,6 +4,9 @@ import backImg from 'src/assets/Rectangle 324.png'
 export const MainDiv = tagStyled.div`
     display: flex;
     margin-bottom: 10rem;
+    @media screen and (max-width : 450px) {
+        margin-bottom: 3rem;
+    }
     border-radius: 15px;
     overflow: hidden;
 `
@@ -12,6 +15,10 @@ export const BackDiv = tagStyled.div`
     background-image: url('${backImg}');
     background-size: 100% 100%;
     height: 730px;
+    @media screen and (max-width : 450px) {
+        height: 500px;
+        border-radius: 15px;
+    }
 `
 export const RightDiv = tagStyled.div`
     width: 50%;
@@ -20,6 +27,9 @@ export const RightDiv = tagStyled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    @media screen and (max-width : 450px) {
+        border-radius: 15px;
+    }
 `
 export const DescDiv = tagStyled.div`
     display: flex;

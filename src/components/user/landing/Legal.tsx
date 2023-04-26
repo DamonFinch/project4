@@ -15,7 +15,7 @@ const Legal = () => {
 
   return (
     <MainDiv id='legal'>
-      <TitleDiv>LEGAL&nbsp;<div style={{ width: '6rem', height: '4rem', borderBottom: '0.5rem solid black' }}></div></TitleDiv>
+      <TitleDiv>LEGAL&nbsp;<div style={match450 ? { width: '6rem', height: '4rem', borderBottom: '0.5rem solid black' } : { width: '6rem', height: '2.5rem', borderBottom: '0.3rem solid black', marginBottom: '2rem' }}></div></TitleDiv>
       <Typography>Success of the investment depends not only on the outcome of the court case, but also on the investor&apos;s ability to bear these additional costs.</Typography>
       <Grid container spacing={3}>
         <Grid item xs={match950 ? 6 : 12}>

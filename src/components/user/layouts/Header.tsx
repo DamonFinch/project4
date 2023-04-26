@@ -18,7 +18,7 @@ const Header = () => {
   const [connectedAccount]: any = useGlobalState('connectedAccount')
   const navigate = useNavigate()
   const location = useLocation()
-  const match1000 = useMediaQuery('(min-width: 1200px)')
+  const match1000 = useMediaQuery('(min-width: 1000px)')
   const [open, setOpen] = React.useState(false)
   const [anchorEl, setAnchorEl] = React.useState(null)
 
@@ -111,7 +111,7 @@ const Header = () => {
             <MenuIcon onClick={handleOpen} />
           }
         </NavDiv>
-        <Popover open={open} anchorEl={anchorEl} handleClose={handleClose} navs={navs} connectedAccount={connectedAccount} />
+        <Popover open={open} anchorEl={anchorEl} handleClose={handleClose} navs={navs} other_navs={other_navs} gotoHandler={gotoHandler} connectedAccount={connectedAccount} />
       </HeaderDiv>
     }
     </>

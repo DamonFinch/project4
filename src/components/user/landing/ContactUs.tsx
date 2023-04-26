@@ -10,7 +10,7 @@ const ContactUs = () => {
   const onairn = ['SharpSpring', 'Retention Science']
 
   const match1040 = useMediaQuery('(min-width: 1040px)')
-  // const match650 = useMediaQuery('(min-width: 650px)')
+  const match450 = useMediaQuery('(min-width: 450px)')
 
   return (
     <MainDiv id="contactus">
@@ -32,7 +32,7 @@ const ContactUs = () => {
           }
         </Grid>
         <Grid item xs={match1040 ? 3 : 6}>
-        <SubTitle>Become a Partner</SubTitle>
+        <SubTitle>Become{ !match450 && <br/> } a Partner</SubTitle>
           {
             partner.map((d, i) => (
               <ContactList key={i}>{d}</ContactList>

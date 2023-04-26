@@ -1,9 +1,11 @@
 import * as React from 'react'
 import { MainDiv, Title } from './styled/Projections.styled'
-import { Box } from '@mui/material'
+import { Box, useMediaQuery } from '@mui/material'
 import CheckIcon from '@mui/icons-material/Check'
 
 const Projections = () => {
+  const match450 = useMediaQuery('(min-width:450px)')
+
   return (
     <MainDiv>
       <Title>Property / Region Valuation Projections</Title>
@@ -16,6 +18,11 @@ const Projections = () => {
           <CheckIcon style={{ color: '#8adaaa', marginRight: '1rem' }} />
           <span>The Major Geopolitical objective of brazil Professor HOC&nbsp;</span><span style={{ color: 'green' }}>+$600 million.</span>
         </Box>
+      </Box>
+      <Box style={{ margin: '2rem 0rem', display: 'flex', justifyContent: 'center' }}>
+        <video width={ match450 ? '80%' : '100%' } height={ match450 ? '80%' : '100%' } controls>
+          <source src='../../../assets/ROUTE VIDEO.mp4' type="video/mp4" />
+        </video>
       </Box>
     </MainDiv>
   )

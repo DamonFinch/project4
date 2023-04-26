@@ -24,17 +24,15 @@ const Landing = () => {
       <AboutUs />
       <div style={match1440 ? { display: 'flex', justifyContent: 'center', padding: '0px 15%' } : { display: 'flex', justifyContent: 'center', padding: '0px 10%' }}>
         <div style={{ width: '100%' }}>
-          <div style={{ marginTop: 150 }}>
-            <JudicialAsset />
-            <TreeDescription />
-            <Legal />
-            <Differentials />
-            <Protential />
-            <Increase />
-            <Juridical />
-            <Projections />
-            <Map />
-          </div>
+          <JudicialAsset />
+          <TreeDescription />
+          <Legal />
+          <Differentials />
+          <Protential />
+          <Increase />
+          <Juridical />
+          <Projections />
+          <Map />
         </div>
       </div>
       <BuyNft />

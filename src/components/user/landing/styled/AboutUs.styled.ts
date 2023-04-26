@@ -4,6 +4,10 @@ import backImg from 'src/assets/Group 76.png'
 export const MainDiv = tagStyled.div`
     background-image: url('${backImg}');
     width: 100%;
+    @media screen and (max-width : 450px) {
+        width: 100%;
+        text-align: justify;
+    }
     background-size: 100% 100%;
 
     margin-top: 50px;

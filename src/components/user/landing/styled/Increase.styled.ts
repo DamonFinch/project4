@@ -5,6 +5,10 @@ export const MainDiv = tagStyled.div`
     flex-direction: column;
     align-items: center;
     margin-top: 8rem;
+    @media screen and (max-width : 450px) {
+        margin-top: 4rem;
+        margin-bottom: -2rem;
+    }
     margin-bottom: 5rem;
 `
 export const ContentDiv = tagStyled.div`
@@ -22,4 +26,9 @@ export const Title = tagStyled.span`
     font-size: 60px;
     font-weight: 800;
     margin-bottom: 5rem;
+    @media screen and (max-width : 450px) {
+        font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 2rem;
+    }
 `
