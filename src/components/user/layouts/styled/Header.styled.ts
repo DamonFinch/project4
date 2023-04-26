@@ -3,26 +3,29 @@ import { Link } from 'react-router-dom'
 import { styled } from '@mui/styles'
 
 export const Logo = tagStyled.img`
-    border-radius : 50%;
     width : 50px;
     height : 50px;
     cursor: pointer;
     margin-right: 20px;
+    @media screen and (max-width : 450px) {
+        width: 25px;
+        height: 25px;
+    }
 `
 export const HeaderDiv = tagStyled.div`
     display : flex;
     justify-content : space-between;
+    align-items : center;
 
     @media screen and (max-width : 450px) {
         justify-content : space-between;
+        height: 40px;
     }
-
-    align-items : center;
 
     height : 90px;
     width : 100%;
     
-    background : rgba(0, 0, 0, 0.3);
+    background : rgba(0, 0, 0, 0.7);
 
     position : fixed;
     left : 0px;
@@ -62,6 +65,10 @@ export const OtherLinkDiv = tagStyled.div`
 export const ButtonDiv = tagStyled.div`
   width: 100%;
   height: 30px;
+  @media screen and (max-width : 450px) {
+    height: 20px;
+    font-size: 15px;
+  }
   background-color: #181818;
   opacity: 0.7;
   color: white;
@@ -75,6 +82,14 @@ export const ButtonDiv = tagStyled.div`
 export const WalletDiv = tagStyled.div`
   width: 150px;
   height: 30px;
+  @media screen and (max-width : 450px) {
+    width: 120px;
+    height: 20px;
+    font-size: 12px;
+    margin-top: 0.2rem;
+    background-color: #333;
+    color: #e8e8e8;
+  }
   margin-left: 40px;
   background-color: #e8e8e8;
   color: black;

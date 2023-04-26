@@ -2,6 +2,9 @@ import tagStyled from 'styled-components'
 
 export const MainDiv = tagStyled.div`
     margin-bottom: 10rem;
+    @media screen and (max-width : 450px) {
+        margin-bottom: 4rem;
+    }
     .MuiTypography-root {
         font-size: 18px;
         padding-top: 2rem;
@@ -14,6 +17,10 @@ export const HeaderP = tagStyled.span`
     font-size: 48px;
     font-weight: 800;
     width: 100%;
+    @media screen and (max-width : 450px) {
+        font-size: 32px;
+        font-weight: 600;
+    }
 `
 export const RightDiv = tagStyled.div`
     width: 100%;

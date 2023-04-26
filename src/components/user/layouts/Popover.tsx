@@ -5,18 +5,17 @@ import {
 
 import { Link } from 'react-router-dom'
 import { styled } from '@mui/styles'
+import tagStyled from 'styled-components'
 
 const MyPopover = ({
   open,
   anchorEl,
   handleClose,
   navs,
+  other_navs,
+  gotoHandler,
   connectedAccount
 }: any) => {
-  React.useEffect(() => {
-    console.log(anchorEl)
-  }, [open])
-
   return (
     <Popover
       open={open}
@@ -35,8 +34,15 @@ const MyPopover = ({
       <List>
       {
         navs.map((nav: any, index: number) => (
-          <ListItem key={index}>
+          !nav.connectRequire && <ListItem key={index}>
             <LinkDiv to={nav.link} hidden={(nav.connectRequire && !connectedAccount)}>{nav.name}</LinkDiv>
+          </ListItem>
+        ))
+      }
+      {
+        other_navs.map((nav: any, index: number) => (
+          <ListItem key={index} onClick={ () => { gotoHandler(nav.name) } }>
+            <OtherLinkDiv key={index}>{nav.name}</OtherLinkDiv>
           </ListItem>
         ))
       }
@@ -49,7 +55,15 @@ export const LinkDiv = styled(Link)({
   textDecoration: 'none',
   color: 'black',
   marginLeft: '1rem',
-  padding: 5
+  padding: 3
 })
+
+export const OtherLinkDiv = tagStyled.div`
+  text-decoration: none;
+  color: black;
+  margin-left: 1rem;  
+  cursor: pointer;
+  padding: 3px;
+`
 
 export default MyPopover

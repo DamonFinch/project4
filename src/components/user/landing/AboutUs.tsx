@@ -15,14 +15,14 @@ const AboutUs = () => {
   const match600 = useMediaQuery('(min-width: 600px)')
 
   return (
-    <MainDiv style={match1440 ? { display: 'flex', justifyContent: 'center', padding: '0px 15%' } : match1260 ? { display: 'flex', justifyContent: 'center', padding: '0px 10%' } : { display: 'flex', justifyContent: 'center', padding: '0px 10%', backgroundSize: 'cover' } } id="aboutus">
+    <MainDiv style={match1440 ? { display: 'flex', justifyContent: 'center', padding: '0px 15%' } : match1260 ? { display: 'flex', justifyContent: 'center', padding: '0px 10%' } : match600 ? { display: 'flex', justifyContent: 'center', padding: '0px 10%', backgroundSize: 'cover' } : { display: 'flex', justifyContent: 'center', padding: '0px 3%', backgroundSize: 'cover' } } id="aboutus">
       <Grid container>
         <Grid item xs={match1260 ? 6 : 12} className={match1260 ? 'first' : ''}>
-          <TitleDiv style={match600 ? {} : { fontSize: 32 }}>ABOUT US&nbsp;<div style={match600 ? { width: '6rem', height: '4rem', borderBottom: '0.5rem solid black' } : { width: '6rem', height: '3rem', borderBottom: '0.5rem solid black' }}></div></TitleDiv>
+          <TitleDiv style={match600 ? {} : { fontSize: 32, fontWeight: 600, justifyContent: 'center' }}>ABOUT US&nbsp;<div style={match600 ? { width: '6rem', height: '4rem', borderBottom: '0.5rem solid black' } : { width: '6rem', height: '2.5rem', borderBottom: '0.3rem solid black' }}></div></TitleDiv>
           <DescDiv>
             Judicaial Asset is a company specializing in crowdfunding, operating with a focus on Brazil, Paraguay, and Argentina.
-            <br/><br/><br/>Welcome to our &quot;About Us&quot; section! We are excited to share with you a little more about our firm specializing in crowdfunding, operating with a focus on Brazil, Paraguay, and Argentina.
-            <br/><br/><br/><br/>At our company, we strive to provide innovative and effective solutions for our clients. We are proud to work with Ibaneis Rocha, one of the most renowned law firms in Brazil, This enables us to offer reliable and secure contracts to our clients, ensuring that all legal aspects are handled with professionalism and care.
+            <br/><br/>{ match600 && <br/> }Welcome to our &quot;About Us&quot; section! We are excited to share with you a little more about our firm specializing in crowdfunding, operating with a focus on Brazil, Paraguay, and Argentina.
+            <br/><br/>{ match600 && <><br/><br/></> }At our company, we strive to provide innovative and effective solutions for our clients. We are proud to work with Ibaneis Rocha, one of the most renowned law firms in Brazil, This enables us to offer reliable and secure contracts to our clients, ensuring that all legal aspects are handled with professionalism and care.
           </DescDiv>
         </Grid>
         <Grid item xs={match1260 ? 6 : 12} className={match1260 ? 'second' : match700 ? 'second1260' : ''}>
