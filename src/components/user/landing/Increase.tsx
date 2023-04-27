@@ -16,8 +16,8 @@ const Increase = () => {
         {
           itmes.map((item, i) => (
             <ItemDiv key={i}>
-              <Typography style={match450 ? { fontSize: 40, fontWeight: 800 } : { fontSize: 32, fontWeight: 600 } }>{item.year}</Typography>
-              <Typography style={{ width: '55%' }}>{item.desc}</Typography>
+              <Typography style={match450 ? { fontSize: 40, fontWeight: 800 } : { fontSize: 24, fontWeight: 600 } }>{item.year}</Typography>
+              <Typography style={match450 ? { width: '55%' } : { width: '75%' }}>{item.desc}</Typography>
             </ItemDiv>
           ))
         }

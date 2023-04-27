@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { MainDiv, HeaderP, RightDiv, DescDiv } from './styled/Differentials.styled'
-import { Typography, Box } from '@mui/material'
+import { Typography, Box, useMediaQuery } from '@mui/material'
 import CheckIcon from '@mui/icons-material/Check'
 
 const Differentials = () => {
@@ -14,6 +14,8 @@ const Differentials = () => {
       description: 'Not tied to anything has no real backing and is more volatile and riskier.NFT of stickers not conveyed to anything is an asset that has no intrinsic value or real basis to support its price. The value of this NFT depends completely on investor confidence and market supply and demand.'
     }
   ]
+
+  const match450 = useMediaQuery('(min-width: 450px)')
   return (
     <MainDiv id="differentials">
       <HeaderP>Differentials compared to other NFTs</HeaderP>
@@ -24,7 +26,7 @@ const Differentials = () => {
             <DescDiv key={i}>
               <CheckIcon />
               <Box style={{ display: 'flex', flexDirection: 'column' }}>
-                <span style={{ fontSize: 32, fontWeight: 600 }}>{d.title}</span>
+                <span style={match450 ? { fontSize: 32, fontWeight: 600 } : { fontSize: 20, fontWeight: 600 }}>{d.title}</span>
                 <Typography>{d.description}</Typography>
               </Box>
             </DescDiv>

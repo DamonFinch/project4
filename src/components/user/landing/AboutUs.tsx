@@ -25,14 +25,14 @@ const AboutUs = () => {
             <br/><br/>{ match600 && <><br/><br/></> }At our company, we strive to provide innovative and effective solutions for our clients. We are proud to work with Ibaneis Rocha, one of the most renowned law firms in Brazil, This enables us to offer reliable and secure contracts to our clients, ensuring that all legal aspects are handled with professionalism and care.
           </DescDiv>
         </Grid>
-        <Grid item xs={match1260 ? 6 : 12} className={match1260 ? 'second' : match700 ? 'second1260' : ''}>
-          <div style={match700 ? { display: 'flex', alignItems: 'flex-end', flexDirection: 'column' } : { display: 'flex', alignItems: 'center', flexDirection: 'column' } }>
-            <img src={Img1} style={{ paddingBottom: '1.5rem' }} />
-            <img src={Img3} style={{ paddingBottom: '1.5rem' }} />
+        <Grid item xs={match1260 ? 6 : 12} className={'second'}>
+          <div style={{ display: 'flex', alignItems: 'flex-end', flexDirection: 'column', justifyContent: 'center' }}>
+            <img src={Img1} style={{ paddingBottom: '1.5rem', width: match600 ? '' : '95%' }} />
+            <img src={Img3} style={{ paddingBottom: '1.5rem', width: match600 ? '' : '95%' }} />
           </div>
           <div style={match700 ? { display: 'flex', alignItems: 'flex-end', flexDirection: 'column', marginLeft: '5rem' } : { display: 'flex', alignItems: 'center', flexDirection: 'column' } }>
-            <img src={Img2} style={{ paddingBottom: '1.5rem' }} />
-            <img src={Img4} />
+            <img src={Img2} style={{ paddingBottom: '1.5rem', width: match600 ? '' : '95%' }} />
+            <img src={Img4} style={{ width: match600 ? '' : '95%' }} />
           </div>
         </Grid>
       </Grid>

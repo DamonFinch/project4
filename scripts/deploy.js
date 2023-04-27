@@ -6,7 +6,7 @@ function sleep(ms) {
 }
 
 async function main() {
-  const base_uri = 'http://judicialasset.com/api/metadata'
+  const base_uri = 'http://app.judicialasset.com/api/metadata'
   const Contract = await ethers.getContractFactory('Contract')
   const contract = await Contract.deploy('Aurora Farm NFT', 'AFN', base_uri)
   

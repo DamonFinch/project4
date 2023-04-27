@@ -22,8 +22,8 @@ const Legal = () => {
           <Grid item xs={12}>
             <ImgDiv src={firstImg} />
             <ShadowDiv />
-            <Typography style={match450 ? { position: 'absolute', fontSize: 24, fontWeight: 600, top: '15%', left: '10%', color: 'white', zIndex: 3 } : { position: 'absolute', fontSize: 24, fontWeight: 600, top: '50%', left: '10%', color: 'white', zIndex: 3 }}>Aurora Farm NFT</Typography>
-            { match450 && <Typography style={match1100 ? { position: 'absolute', width: '61.2%', fontSize: 14, lineHeight: 2.5, top: '30%', left: '10%', color: 'white', zIndex: 3 } : { position: 'absolute', width: '80%', fontSize: 14, lineHeight: 2.5, top: '30%', left: '10%', color: 'white', zIndex: 3 }}>Aurora Farm NFT is pegged to a judicial asset related to a highly productive farm, with a market value of 12 billion reais, the value of Aurora is directly related to the outcome of the legal procedures related to Aurora Farm.</Typography> }
+            <Typography style={{ position: 'absolute', fontSize: 24, fontWeight: 600, top: '15%', left: '10%', color: 'white', zIndex: 3 }}>Aurora Farm NFT</Typography>
+            <Typography style={match1100 ? { position: 'absolute', width: '61.2%', fontSize: 14, lineHeight: 2.5, top: '30%', left: '10%', color: 'white', zIndex: 3 } : { position: 'absolute', width: '80%', fontSize: 14, lineHeight: 2.5, top: '30%', left: '10%', color: 'white', zIndex: 3 }}>Aurora Farm NFT is pegged to a judicial asset related to a highly productive farm, with a market value of 12 billion reais, the value of Aurora is directly related to the outcome of the legal procedures related to Aurora Farm.</Typography>
           </Grid>
         </Grid>
         <Grid item xs={match950 ? 3 : 6}>
