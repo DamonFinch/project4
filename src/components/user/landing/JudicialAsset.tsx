@@ -6,11 +6,11 @@ import { Typography, Grid, useMediaQuery } from '@mui/material'
 import WifiCalling3Icon from '@mui/icons-material/WifiCalling3'
 import GroupsIcon from '@mui/icons-material/Groups'
 import PersonIcon from '@mui/icons-material/Person'
+import backImg from 'src/assets/Rectangle 320.png'
 
 const JudicialAsset = () => {
   const match800 = useMediaQuery('(min-width: 800px)')
   const match500 = useMediaQuery('(min-width: 500px)')
-  const match400 = useMediaQuery('(min-width: 401px)')
 
   const endlist = [
     {
@@ -27,11 +27,15 @@ const JudicialAsset = () => {
     }
   ]
   return (
-    <MainDiv style={match800 ? { height: 550 } : match400 ? { height: 800 } : { height: 950, borderRadius: '15px' }}>
-      <SubDiv>
-        <Typography style={match500 ? {} : { fontSize: 32 }}>Judicial Asset</Typography>
-        <DescP style={ !match800 ? { width: '90%' } : {} }>Judicaial Asset is a company specializing in crowdfunding, operating with a focus Our highly qualified team has expertise in the selection of low-risk legal assets with high profit margins.</DescP>
-      </SubDiv>
+    <MainDiv style={match800 ? { height: 550 } : { height: 800 }}>
+      {
+        match800
+          ? <SubDiv>
+          <Typography style={match500 ? {} : { fontSize: 32 }}>Judicial Asset</Typography>
+          <DescP style={ !match800 ? { width: '90%' } : {} }>Judicaial Asset is a company specializing in crowdfunding, operating with a focus Our highly qualified team has expertise in the selection of low-risk legal assets with high profit margins.</DescP>
+        </SubDiv>
+          : <img src={backImg} />
+      }
       <Grid container spacing={3}>
         {
           endlist.map((list, index) => (

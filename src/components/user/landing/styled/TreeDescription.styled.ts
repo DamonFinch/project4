@@ -16,8 +16,9 @@ export const BackDiv = tagStyled.div`
     background-size: 100% 100%;
     height: 730px;
     @media screen and (max-width : 450px) {
-        height: 500px;
+        height: 300px;
         border-radius: 15px;
+        margin-bottom: 1rem;
     }
 `
 export const RightDiv = tagStyled.div`

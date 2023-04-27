@@ -3,7 +3,13 @@ import backImg from 'src/assets/Rectangle 320.png'
 
 export const MainDiv = tagStyled.div`
     margin: 5rem 0px;
+    @media screen and (max-width : 450px) {
+        margin-bottom: 0rem;
+    }
     background-image: url('${backImg}');
+    @media screen and (max-width : 800px) {
+        background-image: none;
+    }
     width: 100%;
     background-size: 100%;
     display: flex;
@@ -13,6 +19,10 @@ export const MainDiv = tagStyled.div`
         display: flex;
         justify-content: space-between;
         padding: 0px 2rem;
+        @media screen and (max-width : 450px) {
+            padding: 0px;
+            margin-bottom: 7rem;
+        }
         margin-bottom: 2rem;
         .MuiGrid-grid-xs-4, .MuiGrid-grid-xs-12 {
             margin-top: 1rem;

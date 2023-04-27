@@ -17,12 +17,13 @@ import { useMediaQuery } from '@mui/material'
 
 const Landing = () => {
   const match1440 = useMediaQuery('(min-width: 1450px)')
+  const match450 = useMediaQuery('(min-width: 450px)')
 
   return (
     <>
       <Carousel />
       <AboutUs />
-      <div style={match1440 ? { display: 'flex', justifyContent: 'center', padding: '0px 15%' } : { display: 'flex', justifyContent: 'center', padding: '0px 10%' }}>
+      <div style={match1440 ? { display: 'flex', justifyContent: 'center', padding: '0px 15%' } : match450 ? { display: 'flex', justifyContent: 'center', padding: '0px 10%' } : { display: 'flex', justifyContent: 'center', padding: '0px 3%' }}>
         <div style={{ width: '100%' }}>
           <JudicialAsset />
           <TreeDescription />

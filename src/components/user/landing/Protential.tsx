@@ -16,7 +16,7 @@ const Protential = () => {
           <br/><br/>
           In the event of a favorable decision in the repossession suit, the farm will be put up for sale and the full value will be distributed to investors on a pro-rata basis.
         </Description>
-        <Footer style={match600 ? {} : { padding: '1rem' }}>
+        <Footer style={match600 ? {} : { padding: '1.5rem', fontSize: 16 }}>
           If the process is successful, investors in Aurora Farm NFT may have the opportunity to recover their investment and still make significant profits.
         </Footer>
       </LeftDiv>
