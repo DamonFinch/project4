@@ -5,6 +5,7 @@ import { ThemeProvider, CssBaseline } from '@mui/material'
 import useThemeMode from 'src/shared/hooks/useThemeMode'
 import { type ThemeModeProps } from 'src/types/hooks.types'
 
+import ProtectedRoute from 'src/utils/ProtectRoute'
 import AdminLayout from 'src/pages/admin'
 import UserLayout from 'src/pages/user'
 
@@ -29,7 +30,7 @@ const Main = () => {
           <Routes>
             <Route path="/" element={<UserLayout />} />
             <Route path="/user/*" element={<UserLayout />} />
-            <Route path="/admin/*" element={<AdminLayout />} />
+            <Route path="/admin/*" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>} />
           </Routes>
         </React.Suspense>
       </ThemeProvider>

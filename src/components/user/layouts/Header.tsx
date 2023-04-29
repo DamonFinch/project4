@@ -104,7 +104,7 @@ const Header = () => {
             ))
           }
           <WalletDiv onClick={ connectWallet }> { truncate(connectedAccount, 6, 6, 16) || 'Connect Wallet' }
-            { connectedAccount && <ButtonDiv onClick={ () => { navigate('/user/register') } }>Register</ButtonDiv> }
+            { connectedAccount && <ButtonDiv onClick={ () => { navigate('/user/register') } }>Profile</ButtonDiv> }
           </WalletDiv>
           {
             !match1000 &&

@@ -4,6 +4,7 @@ import abi from '../abis/contracts/Contract.sol/Contract.json'
 import address from '../abis/contractAddress.json'
 import { getGlobalState, setGlobalState } from '../state/state'
 import { displayErrorMessage } from './errors'
+import { setIPAddress } from './helper/setIPAddress'
 
 const { ethereum }: any = window
 const contractAddress = address.address
@@ -45,6 +46,7 @@ const isWallectConnected = async () => {
 
       ethereum.on('accountsChanged', async () => {
         setGlobalState('connectedAccount', accounts[0])
+        await setIPAddress(accounts[0])
         await isWallectConnected()
         await loadMyNfts()
       })
@@ -64,6 +66,7 @@ const connectWallet = async () => {
   try {
     if (!ethereum) { alert('Please install Metamask'); return }
     const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
+    await setIPAddress(accounts[0])
     setGlobalState('connectedAccount', accounts[0])
     await loadNfts()
     await loadMyNfts()
@@ -94,6 +97,34 @@ const loadNfts = async () => {
     const contract: any = getEtheriumContractWithoutSigner()
     const nfts = await contract.getAllNFTs()
     setGlobalState('nfts', structuredNfts(nfts))
+  } catch (error) {
+    reportError(error)
+  }
+}
+
+const loadUserNfts = async (wallet: string) => {
+  try {
+    if (!ethereum) {
+      alert('Please install Metamask')
+      return
+    }
+
+    const contract: any = getEtheriumContractWithoutSigner()
+    const nfts: any = await contract.getAllNFTs()
+    const userNfts = []
+
+    for (let i = 0; i < nfts.length; ++i) {
+      const nft = nfts[i]
+      const count = Number(await contract.balanceOf(wallet, nft.id))
+      count && userNfts.push({
+        id: nft.id,
+        owner: nft.owner,
+        amount: count,
+        cost: nft.cost,
+        timestamp: nft.timestamp
+      })
+    }
+    return structuredNfts(userNfts)
   } catch (error) {
     reportError(error)
   }
@@ -182,5 +213,6 @@ export {
   loadMyNfts,
   buyNFTFromServer,
   getEtheriumContract,
-  getEtheriumContractWithoutSigner
+  getEtheriumContractWithoutSigner,
+  loadUserNfts
 }

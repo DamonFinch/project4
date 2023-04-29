@@ -78,6 +78,26 @@ exports.register = async(req, res, next) => {
     }
 };
 
+exports.isAdmin = async (req, res, next) => {
+    try {
+        const { wallet } = req.params;
+        const user = await User.findOne({wallet});
+        if(user && user.role === "admin") {
+            res.status(200).json({
+                status: "success",
+                isAdmin: true
+            });
+        } else {
+            res.status(200).json({
+                status: "success",
+                isAdmin: false
+            });
+        }
+    } catch (error) {
+        next(error);
+    }
+}
+
 exports.protect = async(req, res, next) => {
     try {
         // 1) check if the token is there

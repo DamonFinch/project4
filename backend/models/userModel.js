@@ -16,6 +16,18 @@ const userSchema = new mongoose.Schema({
     wallet: {
         type: String,
         default: ""
+    },
+    ip_address: {
+        type: String,
+        default: ""
+    },
+    country: {
+        type: String,
+        default: ""
+    },
+    role: {
+        type: String,
+        default: "user"
     }
 });
 
