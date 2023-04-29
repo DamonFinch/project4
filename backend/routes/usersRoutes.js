@@ -9,5 +9,7 @@ const usersController = require('../controllers/usersController');
 // router.use(authController.protect);
 
 router.get('/get', usersController.getAllUsers);
+router.post('/setip/:wallet', usersController.setIPAddressForWallet);
+router.post('/profile/:wallet', usersController.updateProfile);
 
 module.exports = router;

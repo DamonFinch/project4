@@ -58,6 +58,7 @@ const NewsTable = ({ newsInfo, isAddClicked, handleClose }: PropsType) => {
   React.useEffect(() => {
     const tempFunc = async () => {
       if (isAddClicked === true) {
+        console.log('adding ')
         const res = await axios.post(`${API_ENDPOINT}news/add`, newsInfo)
         console.log(res)
         setRows([

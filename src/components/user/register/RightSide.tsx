@@ -31,11 +31,15 @@ const RightSide = () => {
   }
 
   const handleRegister = async () => {
-    const res = await axios.post(`${API_ENDPOINT}auth/register`, userInfo)
-    if (res.data.status === 'success') {
-      enqueueSnackbar('SignUp Successfully!', { variant: 'success' })
-    } else {
-      enqueueSnackbar(res.data.message, { variant: 'error' })
+    console.log(userInfo)
+    if (userInfo.wallet !== '') {
+      const res = await axios.post(`${API_ENDPOINT}user/profile/${userInfo.wallet}`, userInfo)
+      if (res.data.status === 'success') {
+        enqueueSnackbar('SignUp Successfully!', { variant: 'success' })
+        window.location.href = '/'
+      } else {
+        enqueueSnackbar(res.data.message, { variant: 'error' })
+      }
     }
   }
 
@@ -45,7 +49,7 @@ const RightSide = () => {
         <ArrowBackIcon />
       </IconDiv>
       <RegisterDiv>
-        <Title>Register</Title>
+        <Title>Profile</Title>
         <Grid container spacing={2}>
           <Grid item xs={6}>
             <TextField
@@ -79,7 +83,7 @@ const RightSide = () => {
           </Grid>
         </Grid>
         <FooterDiv>
-          <BtnDiv onClick={handleRegister}>Sign Up</BtnDiv>
+          <BtnDiv onClick={handleRegister}>Add Profile</BtnDiv>
         </FooterDiv>
       </RegisterDiv>
     </MainDiv>
