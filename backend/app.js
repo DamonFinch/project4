@@ -5,16 +5,22 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cors = require('cors');
+const cron = require('node-cron');
 
 const authRoutes = require('./routes/authRoutes');
 const newsRoutes = require('./routes/newsRoutes');
 const usersRoutes = require('./routes/usersRoutes');
+const chartsRoutes = require('./routes/chartsRoutes');
+const salesRoutes = require('./routes/salesRoutes');
 const metadataRoutes = require('./routes/metadataRoutes');
 const globalErrHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
+const { ListenContract } = require('./utils/Contract')
+const { setNewDayCron } = require('./controllers/chartsController')
 
 const app = express();
 
+ListenContract();
 
 // Allow Cross-Origin requests
 // app.use(cors({
@@ -38,6 +44,12 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter);
 
+// Cron Job
+cron.schedule('43 4 * * *', function() {
+    console.log('running a task at 0:0');
+    setNewDayCron();
+});
+
 // Body parser, reading data from body into req.body
 app.use(express.json({
     limit: '15kb'
@@ -57,9 +69,11 @@ app.use('/auth', authRoutes);
 app.use('/user', usersRoutes);
 app.use('/news', newsRoutes);
 app.use('/metadata', metadataRoutes);
+app.use('/charts', chartsRoutes);
+app.use('/sales', salesRoutes);
 
 app.use('/images', express.static('images'));
-
+console.log(new Date());
 //handle undefined Routes
 app.use('*', (req, res, next) => {
     console.log(req.method);

@@ -26,6 +26,8 @@ contract Contract is ERC1155, Ownable {
     event Saled(
         uint256[] ids,
         uint256[] amounts,
+        uint256 totalAcres,
+        uint256 totalPrice,
         address indexed to,
         uint256 timestamp
     );
@@ -88,7 +90,8 @@ contract Contract is ERC1155, Ownable {
         //     amount += minted[id-1].cost * amounts[i];
         // }
         // require(totalAcres == amount, "BuyFromServer: Incorrect token array");
-        require(totalAcres * amountPerAcres <= msg.value, "BuyFromServer: Low eth amount");
+        uint256 totalPrice = totalAcres * amountPerAcres;
+        require(totalPrice <= msg.value, "BuyFromServer: Low eth amount");
 
         _burnBatch(owner(), tokenIds, amounts);
         _mintBatch(msg.sender, tokenIds, amounts, "");
@@ -98,7 +101,7 @@ contract Contract is ERC1155, Ownable {
             minted[id-1].amount = balanceOf(owner(), id);
         }
 
-        emit Saled(tokenIds, amounts, msg.sender, block.timestamp);
+        emit Saled(tokenIds, amounts, totalAcres, totalPrice, msg.sender, block.timestamp);
     }
     
     function getAllNFTs() public view returns (SaleStruct[] memory) {

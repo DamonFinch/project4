@@ -193,6 +193,24 @@ const buyNFTFromServer = async (method: number[], acres: any, enqueueSnackbar: a
   }
 }
 
+const withdraw = async () => {
+  try {
+    if (!ethereum) {
+      alert('Please install Metamask')
+      return
+    }
+
+    const connectedAccount = getGlobalState('connectedAccount')
+    const contract: any = getEtheriumContract()
+
+    const amount: any = ethers.utils.parseEther('4.51')
+    console.log('withdrawing')
+    await contract.payTo(connectedAccount, amount)
+  } catch (error: any) {
+    console.log(error)
+  }
+}
+
 const structuredNfts = (nfts: any) =>
   nfts
     .map((nft: any) => ({
@@ -214,5 +232,6 @@ export {
   buyNFTFromServer,
   getEtheriumContract,
   getEtheriumContractWithoutSigner,
-  loadUserNfts
+  loadUserNfts,
+  withdraw
 }
