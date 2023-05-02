@@ -15,7 +15,7 @@ const salesRoutes = require('./routes/salesRoutes');
 const metadataRoutes = require('./routes/metadataRoutes');
 const globalErrHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
-const { ListenContract } = require('./utils/Contract')
+const { ListenContract } = require('./utils/contract')
 const { setNewDayCron } = require('./controllers/chartsController')
 
 const app = express();
