@@ -28,3 +28,21 @@ exports.setNewDayCron = async () => {
         console.log(error);
     }
 }
+
+exports.addOne = async (req, res, next) => {
+    try {
+        const date = new Date();
+        const cDate = formatDate(date)
+        console.log(cDate);
+        const data = await DayCharts.create({
+            date: cDate
+        });
+        console.log(data);
+        res.status(200).json({
+            status: 'success',
+            data: data
+        });
+    } catch (error) {
+        next(error)
+    }
+}

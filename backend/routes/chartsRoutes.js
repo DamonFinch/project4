@@ -8,5 +8,6 @@ const chartsController = require('../controllers/chartsController');
 // router.use(authController.protect);
 
 router.get('/:type', chartsController.getChartData);
+router.post('/', chartsController.addOne);
 
 module.exports = router;
