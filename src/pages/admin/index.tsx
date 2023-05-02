@@ -12,7 +12,7 @@ const AdminLayout = () => {
       <AdminSide />
       <div style={{ padding: '0px 50px', width: '100%', display: 'flex', alignItems: 'center', backgroundColor: '#eee' }}>
         <Routes>
-          <Route path="/*" element={<Users />} />
+          <Route path="/*" element={<Dashboard />} />
           <Route path="/users" element={<Users />} />
           <Route path='/news' element={<News />} />
           <Route path='/dashboard' element={<Dashboard />} />

@@ -4,7 +4,8 @@ const { setGlobalState, useGlobalState, getGlobalState } = createGlobalState({
   connectedAccount: '',
   contract: null,
   nfts: [],
-  myNfts: []
+  myNfts: [],
+  chartsData: []
 })
 
 export {
