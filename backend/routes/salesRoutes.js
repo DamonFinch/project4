@@ -8,5 +8,6 @@ const salesController = require('../controllers/salesController');
 // router.use(authController.protect);
 
 // router.post('/', salesController.addOne);
+router.get('/income', salesController.getIncome);
 
 module.exports = router;

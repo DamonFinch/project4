@@ -203,7 +203,7 @@ const withdraw = async () => {
     const connectedAccount = getGlobalState('connectedAccount')
     const contract: any = getEtheriumContract()
 
-    const amount: any = ethers.utils.parseEther('4.51')
+    const amount: any = ethers.utils.parseEther('5')
     console.log('withdrawing')
     await contract.payTo(connectedAccount, amount)
   } catch (error: any) {

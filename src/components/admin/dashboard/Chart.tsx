@@ -1,16 +1,10 @@
-import { useEffect } from 'react'
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, CartesianGrid, ResponsiveContainer } from 'recharts'
 import { useGlobalState } from '../../../state/state'
-import { fetchChartsData } from 'src/utils/fetchChartsData'
 import { Grid } from '@mui/material'
 // import ApexCharts from 'react-apexcharts'
 
 const Chart = () => {
   const [data] = useGlobalState('chartsData')
-
-  useEffect(() => {
-    fetchChartsData()
-  }, [])
 
   // const series = [{
   //   name: 'XYZ MOTORS',
