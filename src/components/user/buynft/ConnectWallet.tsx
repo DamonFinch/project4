@@ -1,7 +1,6 @@
 import * as React from 'react'
-
 import {
-  styled, Modal, Box, Typography
+  styled, Modal, Box, Typography, Button
 } from '@mui/material'
 
 import MetaMaskIcon from 'src/assets/Img/metamask.png'
@@ -21,13 +20,13 @@ const style = {
   p: 4
 }
 
-const NftModal = ({
+const WalletConnectModal = ({
   open,
   handleClose
 }: any) => {
   const walletlist = [
     { title: 'Metamsk', src: MetaMaskIcon },
-    { title: 'walletConenct', src: WalletConnectIcon },
+    { title: 'WalletConenct', src: WalletConnectIcon },
     { title: 'Coinbase Wallet', src: CoinbaseWalletIcon },
     { title: 'Trust Wallet', src: TrustIcon }
   ]
@@ -52,10 +51,22 @@ const NftModal = ({
           <Box>
           {
             walletlist.map((wallet: any, index: number) => (
-              <Box key={index} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: '1px solid #999', padding: '0rem 1rem', height: '3.5rem', borderRadius: '15px', background: '#f3f3f3', marginBottom: '1rem' }}>
+              <Button key={index} sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                border: '1px solid #999',
+                padding: '0rem 1rem',
+                height: '3.5rem',
+                borderRadius: '15px',
+                background: '#f3f3f3',
+                marginBottom: '1rem',
+                color: '#222',
+                width: '100%'
+              }}>
                 <Typography>{wallet.title}</Typography>
                 <img style={{ width: '10%' }} src={wallet.src} />
-              </Box>
+              </Button>
             ))
           }
           </Box>
@@ -77,4 +88,4 @@ const MuiModal = styled(Modal)({
   }
 })
 
-export default NftModal
+export default WalletConnectModal
