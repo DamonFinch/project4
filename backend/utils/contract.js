@@ -17,7 +17,7 @@ const ListenContract = async () => {
             
             const amount = parseInt(totalAcres._hex);
             console.log(amount)
-            const price = ethers.utils.formatEther(totalPrice._hex);
+            const price = Number(ethers.utils.formatEther(totalPrice._hex));
             console.log(price)
             const timestamp = new Date(time.toNumber()).getTime()
             const ts = new Date(time.toNumber())

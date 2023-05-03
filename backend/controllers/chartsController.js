@@ -1,4 +1,6 @@
 const DayCharts = require('../models/ChartsData/dayChartsModel');
+const monthCharts = require('../models/ChartsData/monthChartsModel');
+const yearCharts = require('../models/ChartsData/yearChartsModel');
 const { formatDate } = require('../utils/helper')
 
 exports.getChartData = async (req, res, next) => {
@@ -6,6 +8,8 @@ exports.getChartData = async (req, res, next) => {
         const { type } = req.params;
         let data;
         if(type === 'day') data = await DayCharts.find().sort({date: 1});
+        else if(type === 'month') data = await monthCharts.find().sort({date: 1});
+        else if(type === 'year') data = await yearCharts.find().sort({date: 1});
         res.status(200).json({
             status: 'success',
             data: data
