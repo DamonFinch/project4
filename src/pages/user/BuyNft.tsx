@@ -6,7 +6,7 @@ import NftItem from 'src/components/user/buynft/NftItem'
 import BuyNftModal from 'src/components/user/buynft/BuyNftModal'
 import { useGlobalState } from '../../state/state'
 import ConnectWallet from '../../components/user/buynft/ConnectWallet'
-import { connectWallet } from 'src/utils'
+// import { connectWallet } from 'src/utils'
 import detail from 'src/assets/details.json'
 
 const BuyNft = () => {
@@ -19,7 +19,7 @@ const BuyNft = () => {
   const handleOpen = () => { setOpen(true) }
   const handleClose = () => { setOpen(false) }
 
-  // const handleWOpen = () => { setWOpen(true) }
+  const handleWOpen = () => { setWOpen(true) }
   const handleWClose = () => { setWOpen(false) }
 
   const match1600 = useMediaQuery('(min-width: 1600px)')
@@ -36,7 +36,7 @@ const BuyNft = () => {
       {
         connectedAccount
           ? <ButtonDiv onClick={handleOpen}>Buy Nft</ButtonDiv>
-          : <ButtonDiv onClick={connectWallet}>Connect Wallet</ButtonDiv>
+          : <ButtonDiv onClick={handleWOpen}>Connect Wallet</ButtonDiv>
       }
       </HeaderDiv>
       <Grid container spacing={7}>

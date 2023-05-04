@@ -8,10 +8,11 @@ import {
 } from './styled/Header.styled'
 
 import { type LinkItem, type OtherLinkItem } from 'src/types/types'
-import { connectWallet, truncate } from 'src/utils'
+import { truncate } from 'src/utils'
 import { useGlobalState } from 'src/state/state'
 import MenuIcon from '@mui/icons-material/Menu'
 import Popover from './Popover'
+import ConnectWallet from '../buynft/ConnectWallet'
 
 const Header = () => {
   const theme = useTheme()
@@ -20,6 +21,7 @@ const Header = () => {
   const location = useLocation()
   const match1000 = useMediaQuery('(min-width: 1000px)')
   const [open, setOpen] = React.useState(false)
+  const [wOpen, setWOpen] = React.useState(false)
   const [anchorEl, setAnchorEl] = React.useState(null)
 
   const handleClose = () => {
@@ -54,6 +56,9 @@ const Header = () => {
     { name: 'Juridical' }
     // { name: 'Contact Us' }
   ]
+
+  const handleWOpen = () => { setWOpen(true) }
+  const handleWClose = () => { setWOpen(false) }
 
   const gotoHandler = (name: string) => {
     let ref = null
@@ -103,7 +108,7 @@ const Header = () => {
               <OtherLinkDiv key={index} onClick={ () => { gotoHandler(nav.name) } }>{nav.name}</OtherLinkDiv>
             ))
           }
-          <WalletDiv onClick={ connectWallet }> { truncate(connectedAccount, 6, 6, 16) || 'Connect Wallet' }
+          <WalletDiv onClick={ handleWOpen }> { truncate(connectedAccount, 6, 6, 16) || 'Connect Wallet' }
             { connectedAccount && <ButtonDiv onClick={ () => { navigate('/user/register') } }>Profile</ButtonDiv> }
           </WalletDiv>
           {
@@ -112,6 +117,7 @@ const Header = () => {
           }
         </NavDiv>
         <Popover open={open} anchorEl={anchorEl} handleClose={handleClose} navs={navs} other_navs={other_navs} gotoHandler={gotoHandler} connectedAccount={connectedAccount} />
+        <ConnectWallet open={wOpen} handleClose={handleWClose} />
       </HeaderDiv>
     }
     </>

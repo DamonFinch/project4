@@ -5,6 +5,8 @@ import { WorkListProvider } from './shared/hooks/useWorkList'
 import { SnackbarProvider } from 'notistack'
 import { Provider } from 'react-redux'
 import { store } from './state/store'
+import { client } from './utils/ConnectWalletConfig'
+import { WagmiConfig } from 'wagmi'
 
 const queryClient = new QueryClient()
 
@@ -15,7 +17,9 @@ const App = () => {
         <ThemeModeProvider>
           <WorkListProvider>
             <SnackbarProvider>
-              <Main />
+              <WagmiConfig client={client}>
+                <Main />
+              </WagmiConfig>
             </SnackbarProvider>
           </WorkListProvider>
         </ThemeModeProvider>
