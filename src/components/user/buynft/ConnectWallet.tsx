@@ -2,11 +2,14 @@ import * as React from 'react'
 import {
   styled, Modal, Box, Typography, Button
 } from '@mui/material'
+import { useConnect, useAccount } from 'wagmi'
+import { setGlobalState } from 'src/state/state'
+import { loadMyNfts, loadNfts } from 'src/utils'
 
-import MetaMaskIcon from 'src/assets/Img/metamask.png'
-import WalletConnectIcon from 'src/assets/Img/walletConnectIcon.svg'
-import CoinbaseWalletIcon from 'src/assets/Img/coinbaseWalletIcon.svg'
-import TrustIcon from 'src/assets/Img/trust.png'
+// import MetaMaskIcon from 'src/assets/Img/metamask.png'
+// import WalletConnectIcon from 'src/assets/Img/walletConnectIcon.svg'
+// import CoinbaseWalletIcon from 'src/assets/Img/coinbaseWalletIcon.svg'
+// import TrustIcon from 'src/assets/Img/trust.png'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -24,12 +27,30 @@ const WalletConnectModal = ({
   open,
   handleClose
 }: any) => {
-  const walletlist = [
-    { title: 'Metamsk', src: MetaMaskIcon },
-    { title: 'WalletConenct', src: WalletConnectIcon },
-    { title: 'Coinbase Wallet', src: CoinbaseWalletIcon },
-    { title: 'Trust Wallet', src: TrustIcon }
-  ]
+  const { address, isConnected } = useAccount()
+  // const { data: ensAvatar } = useEnsAvatar({ address })
+  // const { data: ensName } = useEnsName({ address })
+  const { connect, connectors, isLoading, pendingConnector } = useConnect()
+  // const { disconnect } = useDisconnect()
+
+  // const walletlist = [
+  //   { title: 'Metamsk', src: MetaMaskIcon },
+  //   { title: 'WalletConenct', src: WalletConnectIcon },
+  //   { title: 'Coinbase Wallet', src: CoinbaseWalletIcon },
+  //   { title: 'Trust Wallet', src: TrustIcon }
+  // ]
+  const connectHandle = (connector: any) => {
+    connect({ connector })
+    handleClose()
+  }
+
+  React.useEffect(() => {
+    if (isConnected) {
+      setGlobalState('connectedAccount', String(address))
+      loadNfts()
+      loadMyNfts()
+    }
+  }, [address, isConnected])
 
   return (
     <div>
@@ -49,7 +70,30 @@ const WalletConnectModal = ({
             <Typography sx={{ fontSize: '35px', marginTop: '-8px' }} onClick={handleClose}>&times;</Typography>
           </Box>
           <Box>
-          {
+            {connectors.map((connector) => (
+              <Button
+                disabled={!connector.ready}
+                key={connector.id}
+                onClick={() => { connectHandle(connector) }}
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  border: '1px solid #999',
+                  padding: '0rem 1rem',
+                  height: '3.5rem',
+                  borderRadius: '15px',
+                  background: '#f3f3f3',
+                  marginBottom: '1rem',
+                  color: '#222',
+                  width: '100%'
+                }}>
+                {connector.name}
+                {!connector.ready && ' (unsupported)'}
+                {isLoading && connector.id === pendingConnector?.id && ' (connecting)'}
+              </Button>
+            ))}
+          {/* {
             walletlist.map((wallet: any, index: number) => (
               <Button key={index} sx={{
                 display: 'flex',
@@ -68,7 +112,7 @@ const WalletConnectModal = ({
                 <img style={{ width: '10%' }} src={wallet.src} />
               </Button>
             ))
-          }
+          } */}
           </Box>
         </Box>
       </MuiModal>

@@ -5,9 +5,9 @@ import address from '../abis/contractAddress.json'
 import { getGlobalState, setGlobalState } from '../state/state'
 import { displayErrorMessage } from './errors'
 import { setIPAddress } from './helper/setIPAddress'
-import CoinbaseWalletSDK from '@coinbase/wallet-sdk'
-import WalletConnect from '@walletconnect/web3-provider'
-import Web3Modal from 'web3modal'
+// import CoinbaseWalletSDK from '@coinbase/wallet-sdk'
+// import WalletConnect from '@walletconnect/web3-provider'
+// import Web3Modal from 'web3modal'
 
 const { ethereum }: any = window
 const contractAddress = address.address
@@ -16,7 +16,7 @@ const opensea_uri = `https://testnets.opensea.io/assets/goerli/${contractAddress
 const hectars = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
 
 const getEtheriumContractWithoutSigner = () => {
-  const provider = new ethers.providers.Web3Provider(ethereum)
+  const provider = new ethers.providers.InfuraProvider('goerli')
   const contract = new ethers.Contract(contractAddress, contractAbi, provider)
 
   return contract
@@ -53,6 +53,10 @@ const isWallectConnected = async () => {
         await isWallectConnected()
         await loadMyNfts()
       })
+
+      ethereum.on('disconnect', async () => {
+        setGlobalState('connectedAccount', '')
+      })
     }
 
     if (accounts.length) {
@@ -65,54 +69,54 @@ const isWallectConnected = async () => {
   }
 }
 
-// const connectWallet = async () => {
-//   try {
-//     if (!ethereum) { alert('Please install Metamask'); return }
-//     const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
-//     await setIPAddress(accounts[0])
-//     setGlobalState('connectedAccount', accounts[0])
-//     await loadNfts()
-//     await loadMyNfts()
-//   } catch (error) {
-//     reportError(error)
-//   }
-// }
-const providerOptions = {
-  coinbasewallet: {
-    package: CoinbaseWalletSDK,
-    options: {
-      appName: 'Web 3 Modal Demo',
-      infuraId: '9aa3d95b3bc440fa88ea12eaa4456161'
-    }
-  },
-  walletconnect: {
-    package: WalletConnect,
-    options: {
-      infuraId: '9aa3d95b3bc440fa88ea12eaa4456161'
-    }
-  }
-}
-
-const web3Modal = new Web3Modal({
-  providerOptions // required
-})
-
 const connectWallet = async () => {
   try {
-    const connectedAccount = getGlobalState('connectedAccount')
-    if (!connectedAccount) {
-      const provider = await web3Modal.connect()
-      const library: any = new ethers.providers.Web3Provider(provider)
-      const accounts = await library.listAccounts()
-      console.log(accounts)
-      if (accounts) setGlobalState('connectedAccount', accounts[0])
-      await loadNfts()
-      await loadMyNfts()
-    }
+    if (!ethereum) { alert('Please install Metamask'); return }
+    const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
+    await setIPAddress(accounts[0])
+    setGlobalState('connectedAccount', accounts[0])
+    await loadNfts()
+    await loadMyNfts()
   } catch (error) {
-    console.error(error)
+    reportError(error)
   }
 }
+// const providerOptions = {
+//   coinbasewallet: {
+//     package: CoinbaseWalletSDK,
+//     options: {
+//       appName: 'Web 3 Modal Demo',
+//       infuraId: '9aa3d95b3bc440fa88ea12eaa4456161'
+//     }
+//   },
+//   walletconnect: {
+//     package: WalletConnect,
+//     options: {
+//       infuraId: '9aa3d95b3bc440fa88ea12eaa4456161'
+//     }
+//   }
+// }
+
+// const web3Modal = new Web3Modal({
+//   providerOptions // required
+// })
+
+// const connectWallet = async () => {
+//   try {
+//     const connectedAccount = getGlobalState('connectedAccount')
+//     if (!connectedAccount) {
+//       const provider = await web3Modal.connect()
+//       const library: any = new ethers.providers.Web3Provider(provider)
+//       const accounts = await library.listAccounts()
+//       console.log(accounts)
+//       if (accounts) setGlobalState('connectedAccount', accounts[0])
+//       await loadNfts()
+//       await loadMyNfts()
+//     }
+//   } catch (error) {
+//     console.error(error)
+//   }
+// }
 
 const truncate = (text: string, startChars: number, endChars: number, maxLength: number) => {
   if (text?.length > maxLength) {
