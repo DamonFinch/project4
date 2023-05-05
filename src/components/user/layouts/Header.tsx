@@ -57,7 +57,11 @@ const Header = () => {
     // { name: 'Contact Us' }
   ]
 
-  const handleWOpen = () => { setWOpen(true) }
+  const handleWOpen = () => {
+    if (!connectedAccount) {
+      setWOpen(true)
+    }
+  }
   const handleWClose = () => { setWOpen(false) }
 
   const gotoHandler = (name: string) => {
