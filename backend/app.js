@@ -13,6 +13,7 @@ const usersRoutes = require('./routes/usersRoutes');
 const chartsRoutes = require('./routes/chartsRoutes');
 const salesRoutes = require('./routes/salesRoutes');
 const metadataRoutes = require('./routes/metadataRoutes');
+const joinListRoutes = require('./routes/joinListRoutes');
 const globalErrHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
 const { ListenContract } = require('./utils/contract')
@@ -71,6 +72,7 @@ app.use('/news', newsRoutes);
 app.use('/metadata', metadataRoutes);
 app.use('/charts', chartsRoutes);
 app.use('/sales', salesRoutes);
+app.use('/joinlist', joinListRoutes);
 
 app.use('/images', express.static('images'));
 console.log(new Date());
